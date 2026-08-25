@@ -15,14 +15,10 @@
 
     :root {
       /* =========================================================
-         [1] VỊ TRÍ THAY HÌNH NỀN TRANG (BACKGROUND IMAGE):
-         - Điền đường dẫn ảnh vào biến --bg-image bên dưới.
-         - Ví dụ dùng ảnh cùng thư mục: --bg-image: url('bg-jun88.jpg');
-         - Ví dụ dùng link ảnh online:  --bg-image: url('https://link-anh.com/bg.jpg');
-         - Nếu để `none`: Trang sẽ tự dùng nền gradient xanh mượt.
+         [1] THAY BACKGROUND IMAGE
          ========================================================= */
-      --bg-image: none; 
-      --bg-overlay-color: rgba(238, 252, 255, 0.65); /* Lớp phủ mờ giúp nổi bật nội dung trên ảnh nền */
+      --bg-image: url('https://i.pinimg.com/736x/75/2c/8e/752c8e7e20195797d9e8c03d8561c0bf.jpg'); 
+      --bg-overlay-color: rgba(238, 252, 255, 0.35);
 
       --primary: #079fd2;
       --primary-dark: #087ea9;
@@ -293,7 +289,7 @@
       justify-content: center;
     }
 
-    /* Vòng tròn xanh nhạt tỏa sáng - Căn chính giữa chuẩn 100% sau lưng hình người */
+    /* Vòng tròn xanh sau hình */
     .circle-backdrop {
       position: absolute;
       width: clamp(320px, 82%, 460px);
@@ -325,7 +321,7 @@
       100% { transform: translate(0, 0) rotate(360deg); }
     }
 
-    /* Thẻ ảnh nhân vật chính - Kích thước to hơn & căn chuẩn center */
+    /* Thẻ ảnh nhân vật chính */
     .visual-image {
       position: relative;
       z-index: 3;
@@ -340,8 +336,6 @@
       user-select: none;
       -webkit-user-drag: none;
     }
-
-    /* Các phần quà và thẻ vé vây xung quanh */
     .visual-ticket {
       position: absolute;
       z-index: 6;
@@ -460,8 +454,6 @@
       background: linear-gradient(90deg, var(--primary-dark), var(--primary));
       box-shadow: 0 10px 22px rgba(0, 147, 194, 0.20);
     }
-
-    /* GRADIENT TEXT MỚI CỰC KỲ NỔI BẬT DÀNH CHO "NHẬP CODE NHẬN THƯỞNG" */
     .form-title {
       position: relative;
       margin: 0;
@@ -886,13 +878,10 @@
 
             <!-- 
               =========================================================
-              [2] VỊ TRÍ THAY LOGO (BRAND LOGO):
-              - Mặc định đang dùng biểu tượng chữ J bằng HTML/CSS.
-              - Nếu muốn thay bằng ẢNH LOGO THẬT, bạn bỏ thẻ <div class="brand-mark"> 
-                và thêm: <img src="logo-jun88.png" style="height: 50px; width: auto;" alt="Logo JUN88" />
+              [2] THAY LOGO (BRAND LOGO):
               =========================================================
             -->
-            <div class="brand" id="brandName" aria-label="JUN88">
+            <img src="https://hamonline.nl/wp-content/uploads/2026/07/jun88-logo-1.webp" style="height: 70px; width: auto;" alt="Logo JUN88" />
               <div class="brand-mark" aria-hidden="true"><span>J</span></div>
               <span>JUN88</span>
             </div>
@@ -918,11 +907,11 @@
 
               <!-- 
                 =========================================================
-                [3] VỊ TRÍ THAY HÌNH ẢNH NHÂN VẬT / CẦU THỦ / KHUYẾN MÃI:
+                [3] THAY HÌNH ẢNH NHÂN VẬT / CẦU THỦ / KHUYẾN MÃI:
                 - Thay link ảnh của bạn vào thuộc tính `src="..."` bên dưới.
                 =========================================================
               -->
-              <img class="visual-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm1FbmV6kiyosepQjwN789eCc3oecNBNV5H41PwEc4cw&s=10" alt="JUN88 - Nhận Code Thưởng" id="realVisualImg" />
+              <img class="visual-image" src="https://agneskoor.nl/wp-content/uploads/2025/08/DANG-KY-jun88-min-1-8-4.png" alt="JUN88 - Nhận Code Thưởng" id="realVisualImg" />
 
               <!-- Thẻ vé CODE / BONUS vây xung quanh -->
               <div class="visual-ticket">CODE</div>
