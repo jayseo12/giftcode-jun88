@@ -123,207 +123,48 @@
         linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
     }
 
-    /* ===== SECTION ===== */
+    /* ===== SECTION 1 & SECTION 2 LAYOUT STRUCTURE ===== */
     .code-section {
-      width: min(100%, var(--container));
+      width: 100%;
       min-height: 100vh;
-      margin: 0 auto;
-      padding: 42px 36px;
+      padding: clamp(28px, 3.2vw, 48px) clamp(24px, 4vw, 68px);
       display: flex;
       align-items: center;
+      justify-content: center;
     }
 
     .section-inner {
-      position: relative;
+      width: min(100%, 1540px);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      gap: clamp(24px, 3vw, 42px);
+    }
+
+    /* --- SECTION 1: TOP HERO COPY (LOGO & SLOGAN CANH GIỮA) --- */
+    .top-section {
       width: 100%;
-      min-height: calc(100vh - 84px);
-      padding-top: 150px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(430px, 0.96fr);
-      gap: clamp(30px, 4vw, 78px);
-      align-items: center;
-    }
-
-    /* ===== LEFT VISUAL ===== */
-    .visual-column {
-      grid-column: 1;
-      grid-row: 2;
-      position: relative;
-      min-height: 720px;
+      flex: 0 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 26px 0;
-    }
-
-    .visual-glow {
-      position: absolute;
-      width: min(42vw, 620px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(73, 222, 250, 0.42) 0%, rgba(73, 222, 250, 0.20) 34%, rgba(73, 222, 250, 0) 72%);
-      filter: blur(12px);
-      animation: breathe 5s ease-in-out infinite;
-    }
-
-    .visual-ring {
-      position: absolute;
-      width: min(38vw, 560px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 1px solid rgba(4, 156, 202, 0.20);
-      box-shadow:
-        0 0 0 26px rgba(255,255,255,0.25),
-        inset 0 0 45px rgba(26, 201, 239, 0.12);
-    }
-
-    .visual-card {
-      position: relative;
-      z-index: 2;
-      width: min(100%, 720px);
-      min-height: 640px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 42px;
-      padding: 28px;
-    }
-
-    .visual-image {
-      width: min(100%, 700px);
-      height: auto;
-      max-height: 700px;
-      object-fit: contain;
-      filter:
-        drop-shadow(0 32px 28px rgba(3, 93, 121, 0.19))
-        drop-shadow(0 0 28px rgba(71, 220, 250, 0.16));
-      animation: floatVisual 6s ease-in-out infinite;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    .fallback-visual {
-      width: min(88%, 600px);
-      aspect-ratio: 1 / 0.92;
-      position: relative;
-      display: grid;
-      place-items: center;
-    }
-
-    .platform {
-      position: absolute;
-      width: 78%;
-      height: 18%;
-      bottom: 8%;
-      border-radius: 50%;
-      background:
-        linear-gradient(180deg, #faffff 0%, #b8ebf6 47%, #72d3e8 100%);
-      border: 4px solid #a1e5f3;
-      box-shadow:
-        0 18px 36px rgba(0, 130, 170, 0.18),
-        inset 0 4px 0 rgba(255,255,255,.82);
-      transform: perspective(300px) rotateX(62deg);
-    }
-
-    .visual-person {
-      position: absolute;
-      bottom: 17%;
-      width: 62%;
-      height: 64%;
-      border-radius: 45% 45% 28% 28%;
-      background:
-        linear-gradient(160deg, #f8d1bc 0 12%, #151d25 12% 55%, #091722 55% 100%);
-      box-shadow: 18px 16px 30px rgba(0, 80, 110, 0.22);
-      transform: rotate(-4deg);
-    }
-
-    .visual-person::before {
-      content: "";
-      position: absolute;
-      width: 29%;
-      aspect-ratio: 1;
-      left: 24%;
-      top: -10%;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 58% 40%, #f4c5ad 0 48%, #272329 49% 65%, transparent 66%);
-      box-shadow: 45px -3px 0 -9px #242027;
-    }
-
-    .visual-ticket {
-      position: absolute;
-      z-index: 3;
-      width: 150px;
-      height: 72px;
-      left: 7%;
-      top: 31%;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #ffc82e, #fff097);
-      color: #8d3a00;
-      display: grid;
-      place-items: center;
-      font-size: 24px;
-      font-weight: 900;
-      transform: rotate(-12deg);
-      box-shadow: 0 18px 28px rgba(188, 125, 0, 0.20);
-      animation: ticketFloat 4.5s ease-in-out infinite;
-    }
-
-    .visual-ticket.right {
-      left: auto;
-      right: 4%;
-      top: 47%;
-      transform: rotate(11deg) scale(0.82);
-      animation-delay: -1.2s;
-    }
-
-    .gift {
-      position: absolute;
-      bottom: 17%;
-      left: 8%;
-      width: 120px;
-      height: 90px;
-      border-radius: 18px;
-      background:
-        linear-gradient(90deg, transparent 42%, #d8fbff 42% 58%, transparent 58%),
-        linear-gradient(#f5fdff, #c5eff8);
-      border: 3px solid #85dced;
-      box-shadow: 0 18px 28px rgba(0, 114, 150, 0.15);
-      transform: rotate(-9deg);
-    }
-
-    .gift::before {
-      content: "";
-      position: absolute;
-      left: -5px;
-      right: -5px;
-      top: 21px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #86e0ef, #d6fbff, #86e0ef);
-    }
-
-    .gift.right {
-      left: auto;
-      right: 7%;
-      bottom: 22%;
-      transform: rotate(9deg) scale(0.9);
+      text-align: center;
     }
 
     .hero-copy {
-      grid-column: 1 / -1;
-      position: relative;
       width: 100%;
-      padding: 2px 20px 0;
-      text-align: center;
-      z-index: 20;
-    }
-
-    .brand {
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 20;
     }
 
     .brand {
@@ -331,7 +172,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 14px;
+      margin: 0 auto 10px;
       color: var(--primary-deep);
       font-weight: 900;
       letter-spacing: 0.06em;
@@ -358,7 +199,9 @@
     }
 
     .eyebrow {
-      margin: 0 auto;
+      width: 100%;
+      margin: 10px auto 0;
+      text-align: center;
       font-size: clamp(18px, 1.6vw, 28px);
       font-weight: 900;
       text-transform: uppercase;
@@ -368,15 +211,16 @@
     }
 
     .trust-row {
+      width: 100%;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 16px;
     }
 
     .trust-pill {
-      padding: 8px 14px;
+      padding: 8px 16px;
       border-radius: 999px;
       border: 1px solid rgba(6, 150, 195, 0.18);
       background: rgba(255,255,255,.60);
@@ -387,8 +231,16 @@
       backdrop-filter: blur(8px);
     }
 
+    /* --- SECTION 2: 2 CỘT CÂN ĐỐI (TRÁI: VISUAL, PHẢI: FORM) --- */
     .content-section {
+      width: 100%;
+      flex: 1 1 auto;
       position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(28px, 3.6vw, 64px);
+      align-items: center;
+      justify-content: stretch;
     }
 
     .content-section::before {
@@ -396,23 +248,204 @@
       position: absolute;
       left: 50%;
       top: -18px;
-      width: min(420px, 70%);
+      width: min(460px, 55%);
       height: 1px;
       transform: translateX(-50%);
       background: linear-gradient(90deg, transparent, rgba(7,159,210,.18), transparent);
       pointer-events: none;
     }
 
-    /* ===== RIGHT FORM ===== */
+    /* ===== LEFT VISUAL COLUMN ===== */
+    .visual-column {
+      width: 100%;
+      min-width: 0;
+      min-height: 520px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+    }
+
+    .visual-glow {
+      position: absolute;
+      width: min(80%, 620px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(73, 222, 250, 0.42) 0%, rgba(73, 222, 250, 0.20) 34%, rgba(73, 222, 250, 0) 72%);
+      filter: blur(12px);
+      animation: breathe 5s ease-in-out infinite;
+    }
+
+    .visual-ring {
+      position: absolute;
+      width: min(75%, 560px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(4, 156, 202, 0.20);
+      box-shadow:
+        0 0 0 26px rgba(255,255,255,0.25),
+        inset 0 0 45px rgba(26, 201, 239, 0.12);
+    }
+
+    .visual-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 720px;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 42px;
+      padding: 20px;
+    }
+
+    .visual-image {
+      width: min(100%, 700px);
+      height: auto;
+      max-height: 700px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 32px 28px rgba(3, 93, 121, 0.19))
+        drop-shadow(0 0 28px rgba(71, 220, 250, 0.16));
+      animation: floatVisual 6s ease-in-out infinite;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .fallback-visual {
+      position: relative;
+      width: min(100%, 620px);
+      height: min(100%, 540px);
+      aspect-ratio: 1 / 0.88;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+    }
+
+    .platform {
+      position: absolute;
+      left: 50%;
+      width: 78%;
+      height: 18%;
+      bottom: 8%;
+      border-radius: 50%;
+      background:
+        linear-gradient(180deg, #faffff 0%, #b8ebf6 47%, #72d3e8 100%);
+      border: 4px solid #a1e5f3;
+      box-shadow:
+        0 18px 36px rgba(0, 130, 170, 0.18),
+        inset 0 4px 0 rgba(255,255,255,.82);
+      transform: translateX(-50%) perspective(300px) rotateX(62deg);
+      transform-origin: center center;
+    }
+
+    .visual-person {
+      position: absolute;
+      left: 50%;
+      bottom: 17%;
+      width: 60%;
+      height: 64%;
+      border-radius: 45% 45% 28% 28%;
+      background:
+        linear-gradient(160deg, #f8d1bc 0 12%, #151d25 12% 55%, #091722 55% 100%);
+      box-shadow: 18px 16px 30px rgba(0, 80, 110, 0.22);
+      transform: translateX(-50%) rotate(-4deg);
+      transform-origin: center bottom;
+    }
+
+    .visual-person::before {
+      content: "";
+      position: absolute;
+      width: 29%;
+      aspect-ratio: 1;
+      left: 24%;
+      top: -10%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 58% 40%, #f4c5ad 0 48%, #272329 49% 65%, transparent 66%);
+      box-shadow: 45px -3px 0 -9px #242027;
+    }
+
+    .visual-ticket {
+      position: absolute;
+      z-index: 6;
+      width: 148px;
+      height: 72px;
+      left: 8%;
+      top: 31%;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffc82e, #fff097);
+      color: #8d3a00;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 900;
+      transform: rotate(-12deg);
+      box-shadow: 0 18px 28px rgba(188, 125, 0, 0.20);
+      animation: ticketFloat 4.5s ease-in-out infinite;
+    }
+
+    .visual-ticket.right {
+      left: auto;
+      right: 6%;
+      top: 47%;
+      transform: rotate(11deg) scale(0.82);
+      animation-delay: -1.2s;
+    }
+
+    .gift {
+      position: absolute;
+      z-index: 5;
+      bottom: 17%;
+      left: 10%;
+      width: 110px;
+      height: 85px;
+      border-radius: 18px;
+      background:
+        linear-gradient(90deg, transparent 42%, #d8fbff 42% 58%, transparent 58%),
+        linear-gradient(#f5fdff, #c5eff8);
+      border: 3px solid #85dced;
+      box-shadow: 0 18px 28px rgba(0, 114, 150, 0.15);
+      transform: rotate(-9deg);
+    }
+
+    .gift::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      right: -5px;
+      top: 21px;
+      height: 18px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #86e0ef, #d6fbff, #86e0ef);
+    }
+
+    .gift.right {
+      left: auto;
+      right: 8%;
+      bottom: 20%;
+      transform: rotate(9deg) scale(0.9);
+    }
+
+    /* ===== RIGHT FORM COLUMN ===== */
     .form-column {
-      grid-column: 2;
-      grid-row: 2;
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       z-index: 5;
     }
 
     .form-shell {
       position: relative;
+      width: min(100%, 620px);
+      margin: 0 auto;
       padding: 34px;
       border-radius: var(--radius-xl);
       background:
@@ -444,7 +477,7 @@
     .form-kicker {
       display: inline-block;
       margin-bottom: 8px;
-      padding: 7px 12px;
+      padding: 7px 14px;
       border-radius: 999px;
       color: white;
       font-size: 11px;
@@ -470,8 +503,8 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      font-size: clamp(34px, 3.6vw, 60px);
-      line-height: 1.02;
+      font-size: clamp(34px, 3.5vw, 56px);
+      line-height: 1.05;
       font-weight: 1000;
       text-transform: uppercase;
       letter-spacing: -0.04em;
@@ -533,7 +566,7 @@
       margin-top: 12px;
       color: var(--text-soft);
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     .form {
@@ -621,7 +654,7 @@
       overflow: hidden;
       color: white;
       background: linear-gradient(135deg, #43d5ee 0%, #0da8d6 48%, #0582ae 100%);
-      font-size: clamp(20px, 2vw, 28px);
+      font-size: clamp(20px, 2vw, 26px);
       font-weight: 1000;
       letter-spacing: .01em;
       box-shadow:
@@ -749,6 +782,7 @@
       opacity: 0;
       transform: translateY(4px);
       transition: opacity .25s ease, transform .25s ease;
+      text-align: center;
     }
 
     .status-message.show {
@@ -774,7 +808,7 @@
     .spark.s3 { left: 74%; top: 17%; animation-delay: -.8s; transform: scale(.6); }
     .spark.s4 { left: 89%; top: 68%; animation-delay: -.1s; transform: scale(.85); }
 
-    /* ===== ANIMATION ===== */
+    /* ===== KEYFRAME ANIMATIONS ===== */
     @keyframes floatVisual {
       0%, 100% { transform: translateY(0) translateX(0); }
       50% { transform: translateY(-12px) translateX(4px); }
@@ -821,92 +855,38 @@
       }
     }
 
-    /* ===== RESPONSIVE ===== */
+    /* ===== RESPONSIVE MEDIA QUERIES ===== */
     @media (max-width: 1080px) {
       .code-section {
-        padding: 30px 22px;
+        padding: 30px 20px;
       }
 
-      .section-inner {
+      .content-section {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 22px;
-      }
-
-      .hero-copy {
-        grid-column: 1;
-        grid-row: 1;
+        gap: 28px;
       }
 
       .visual-column {
-        grid-column: 1;
-        grid-row: 2;
-      }
-
-      .form-column {
-        grid-column: 1;
-        grid-row: 3;
-      }
-
-      .visual-column {
-        min-height: 570px;
+        min-height: 460px;
       }
 
       .visual-card {
-        min-height: 520px;
+        min-height: 440px;
       }
 
-      .form-column {
-        max-width: 700px;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .hero-copy {
-        top: 10px;
-      }
-
-      .brand {
-        font-size: clamp(34px, 6vw, 58px);
+      .fallback-visual {
+        width: min(100%, 540px);
+        height: 440px;
       }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 760px) {
       .code-section {
-        padding: 18px 14px 28px;
+        padding: 22px 14px 28px;
       }
 
       .section-inner {
-        min-height: auto;
-        padding-top: 138px;
-      }
-
-      .visual-column {
-        min-height: 430px;
-        padding: 0;
-      }
-
-      .visual-card {
-        min-height: 410px;
-        padding: 8px;
-      }
-
-      .visual-ring {
-        width: 86vw;
-      }
-
-      .visual-glow {
-        width: 95vw;
-      }
-
-      .hero-copy {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        padding: 0 8px;
-        margin-bottom: 0;
+        gap: 20px;
       }
 
       .brand {
@@ -924,13 +904,34 @@
         font-size: 15px;
       }
 
-      .trust-row {
-        margin-top: 14px;
-      }
-
       .trust-pill {
         font-size: 10px;
         padding: 7px 11px;
+      }
+
+      .visual-column {
+        min-height: 380px;
+      }
+
+      .visual-card {
+        min-height: 360px;
+        padding: 8px;
+      }
+
+      .fallback-visual {
+        width: 100%;
+        height: 360px;
+      }
+
+      .visual-ticket {
+        width: 110px;
+        height: 56px;
+        font-size: 18px;
+      }
+
+      .gift {
+        width: 85px;
+        height: 65px;
       }
 
       .form-shell {
@@ -948,322 +949,13 @@
 
       .submit-btn {
         min-height: 65px;
-        font-size: 21px;
+        font-size: 20px;
       }
 
       .helper-links {
         grid-template-columns: 1fr;
       }
-
-      .fallback-visual {
-        width: 100%;
-      }
-
-      .visual-ticket {
-        width: 110px;
-        height: 56px;
-        font-size: 18px;
-      }
-
-      .gift {
-        width: 85px;
-        height: 65px;
-      }
     }
-  
-    /* =========================================================
-       V6 LAYOUT FIX
-       - Header/logo/H1 = one full-width centered row
-       - Main content = exactly 50/50 two-column grid
-       - Visual stage centered inside left column
-       - Form centered inside right column
-       ========================================================= */
-
-    .code-section {
-      width: 100%;
-      min-height: 100vh;
-      padding: clamp(28px, 3.2vw, 48px) clamp(24px, 4vw, 68px);
-    }
-
-    .section-inner {
-      width: min(100%, 1540px);
-      min-height: calc(100vh - clamp(56px, 6.4vw, 96px));
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: center;
-      gap: clamp(22px, 2.5vw, 34px);
-    }
-
-    .top-section {
-      width: 100%;
-      flex: 0 0 auto;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero-copy {
-      width: 100%;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .brand {
-      justify-content: center;
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      width: 100%;
-      margin: 14px auto 0;
-      text-align: center;
-    }
-
-    .trust-row {
-      width: 100%;
-      margin: 14px auto 0;
-      justify-content: center;
-    }
-
-    .content-section {
-      width: 100%;
-      flex: 1 1 auto;
-      min-height: 0;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: clamp(28px, 3.6vw, 64px);
-      align-items: center;
-      justify-content: stretch;
-    }
-
-    .content-section::before {
-      left: 50%;
-      top: -12px;
-      width: min(460px, 55%);
-    }
-
-    .visual-column {
-      width: 100%;
-      min-width: 0;
-      min-height: 0;
-      height: 100%;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: visible;
-    }
-
-    .visual-glow {
-      width: min(70%, 680px);
-      max-width: 680px;
-      min-width: 420px;
-    }
-
-    .visual-ring {
-      width: min(66%, 630px);
-      max-width: 630px;
-      min-width: 390px;
-    }
-
-    .visual-card {
-      width: 100%;
-      max-width: 760px;
-      min-height: 560px;
-      height: 100%;
-      margin: 0 auto;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .fallback-visual {
-      position: relative;
-      width: min(100%, 720px);
-      height: min(100%, 590px);
-      aspect-ratio: 1 / .86;
-      margin: 0 auto;
-      display: block;
-    }
-
-    .visual-person {
-      left: 50%;
-      bottom: 16%;
-      width: 57%;
-      height: 66%;
-      transform: translateX(-50%) rotate(-4deg);
-      transform-origin: center bottom;
-    }
-
-    .platform {
-      left: 50%;
-      width: 76%;
-      height: 17%;
-      bottom: 7%;
-      transform: translateX(-50%) perspective(300px) rotateX(62deg);
-      transform-origin: center center;
-    }
-
-    .visual-ticket {
-      left: 14%;
-      top: 34%;
-      width: 148px;
-      height: 72px;
-      z-index: 6;
-    }
-
-    .visual-ticket.right {
-      right: 11%;
-      left: auto;
-      top: 48%;
-      z-index: 6;
-    }
-
-    .gift {
-      left: 15%;
-      bottom: 17%;
-      z-index: 5;
-    }
-
-    .gift.right {
-      left: auto;
-      right: 13%;
-      bottom: 20%;
-      z-index: 5;
-    }
-
-    .form-column {
-      width: 100%;
-      min-width: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .form-shell {
-      width: min(100%, 620px);
-      margin: 0 auto;
-    }
-
-    /* Keep the form typography strong but prevent oversized headline
-       from pushing the two-column alignment apart. */
-    .form-title {
-      font-size: clamp(38px, 3.55vw, 58px);
-    }
-
-    /* Desktop/tablet */
-    @media (min-width: 1081px) {
-      .visual-column,
-      .form-column {
-        align-self: stretch;
-      }
-
-      .form-column {
-        display: flex;
-        align-items: center;
-      }
-
-      .visual-card {
-        height: 100%;
-      }
-    }
-
-    /* Tablet */
-    @media (max-width: 1080px) {
-      .section-inner {
-        min-height: auto;
-      }
-
-      .content-section {
-        grid-template-columns: minmax(0, 1fr) minmax(360px, .95fr);
-        gap: 24px;
-      }
-
-      .visual-card {
-        min-height: 500px;
-      }
-
-      .fallback-visual {
-        width: min(100%, 620px);
-        height: 500px;
-      }
-
-      .form-shell {
-        width: 100%;
-      }
-
-      .visual-ticket {
-        width: 128px;
-        height: 64px;
-      }
-    }
-
-    /* Mobile: keep the same logical order, but stack columns cleanly. */
-    @media (max-width: 760px) {
-      .code-section {
-        padding: 22px 14px 28px;
-      }
-
-      .section-inner {
-        gap: 18px;
-      }
-
-      .content-section {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .visual-column {
-        min-height: 420px;
-        height: 420px;
-      }
-
-      .visual-card {
-        min-height: 420px;
-      }
-
-      .fallback-visual {
-        width: 100%;
-        height: 410px;
-      }
-
-      .visual-glow {
-        min-width: 280px;
-        width: 85%;
-      }
-
-      .visual-ring {
-        min-width: 270px;
-        width: 82%;
-      }
-
-      .visual-ticket {
-        width: 108px;
-        height: 55px;
-        font-size: 18px;
-      }
-
-      .form-column {
-        width: 100%;
-      }
-
-      .form-shell {
-        width: 100%;
-      }
-    }
-
   </style>
 </head>
 
@@ -1278,135 +970,134 @@
     <section class="code-section" aria-labelledby="code-title">
       <div class="section-inner">
 
-        <div class="hero-copy">
-          <div class="brand" id="brandName" aria-label="JUN88">
-            <div class="brand-mark" aria-hidden="true"><span>J</span></div>
-            <span>JUN88</span>
-          </div>
+        <!-- ========================= SECTION 1: TOP HERO (CANH GIỮA 100%) ========================= -->
+        <div class="top-section">
+          <div class="hero-copy">
+            <div class="brand" id="brandName" aria-label="JUN88">
+              <div class="brand-mark" aria-hidden="true"><span>J</span></div>
+              <span>JUN88</span>
+            </div>
 
-          <p class="eyebrow" id="heroEyebrow">NHẬN CODE - NHẬN THƯỞNG MỖI NGÀY</p>
+            <p class="eyebrow" id="heroEyebrow">NHẬN CODE - NHẬN THƯỞNG MỖI NGÀY</p>
 
-          <div class="trust-row" aria-label="Ưu điểm">
-            <span class="trust-pill">CODE HOT</span>
-            <span class="trust-pill">NHẬN NHANH</span>
-            <span class="trust-pill">HỖ TRỢ 24/7</span>
+            <div class="trust-row" aria-label="Ưu điểm">
+              <span class="trust-pill">CODE HOT</span>
+              <span class="trust-pill">NHẬN NHANH</span>
+              <span class="trust-pill">HỖ TRỢ 24/7</span>
+            </div>
           </div>
         </div>
 
-        <!-- ========================= LEFT: VISUAL ========================= -->
-        <div class="visual-column">
+        <!-- ========================= SECTION 2: CONTENT SECTION (2 CỘT TRÁI - PHẢI) ========================= -->
+        <div class="content-section">
 
-          <div class="visual-glow" aria-hidden="true"></div>
-          <div class="visual-ring" aria-hidden="true"></div>
+          <!-- CỘT BÊN TRÁI: Hình ảnh người, hình ảnh code & quà tặng -->
+          <div class="visual-column">
+            <div class="visual-glow" aria-hidden="true"></div>
+            <div class="visual-ring" aria-hidden="true"></div>
 
-</div>
-
-          <div class="visual-card">
-
-            <!--
-              ĐỂ DÙNG ẢNH THẬT:
-              thay src bằng đường dẫn ảnh của bạn, ví dụ:
-              <img class="visual-image" src="jun88-hero.png" alt="JUN88 - nhận code thưởng" />
-
-              Mặc định bên dưới dùng hình minh họa CSS để file HTML chạy ngay.
-            -->
-            <div class="fallback-visual" id="fallbackVisual" aria-label="Minh họa nhận code JUN88">
-              <div class="visual-person"></div>
-              <div class="gift"></div>
-              <div class="gift right"></div>
-              <div class="visual-ticket">CODE</div>
-              <div class="visual-ticket right">BONUS</div>
-              <div class="platform"></div>
+            <div class="visual-card">
+              <!--
+                ĐỂ DÙNG ẢNH THẬT:
+                thay src bằng đường dẫn ảnh của bạn, ví dụ:
+                <img class="visual-image" src="jun88-hero.png" alt="JUN88 - nhận code thưởng" />
+              -->
+              <div class="fallback-visual" id="fallbackVisual" aria-label="Minh họa nhận code JUN88">
+                <div class="visual-person"></div>
+                <div class="gift"></div>
+                <div class="gift right"></div>
+                <div class="visual-ticket">CODE</div>
+                <div class="visual-ticket right">BONUS</div>
+                <div class="platform"></div>
+              </div>
             </div>
-
           </div>
-        </div>
 
-        <!-- ========================= RIGHT: CODE FORM ========================= -->
-        <div class="form-column">
-          <div class="form-shell">
+          <!-- CỘT BÊN PHẢI: Biểu mẫu Nhập code nhận thưởng -->
+          <div class="form-column">
+            <div class="form-shell">
 
-            <div class="form-head">
-              <span class="form-kicker">ƯU ĐÃI DÀNH CHO THÀNH VIÊN</span>
+              <div class="form-head">
+                <span class="form-kicker">ƯU ĐÃI DÀNH CHO THÀNH VIÊN</span>
 
-              <h1 class="form-title" id="code-title">
-                NHẬP CODE
-                <span>NHẬN THƯỞNG</span>
-              </h1>
+                <h1 class="form-title" id="code-title">
+                  NHẬP CODE
+                  <span>NHẬN THƯỞNG</span>
+                </h1>
 
-              <p class="form-subtitle" id="formSubtitle">
-                Điền mã CODE và tài khoản của bạn để kiểm tra ưu đãi đang áp dụng.
-              </p>
-            </div>
-
-            <form class="form" id="codeForm" novalidate>
-
-              <div class="field">
-                <label for="promoCode">
-                  <span class="label-icon" aria-hidden="true">#</span>
-                  Mã CODE
-                </label>
-
-                <div class="input-wrap">
-                  <input
-                    id="promoCode"
-                    name="promoCode"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="Nhập mã CODE"
-                    maxlength="50"
-                    required
-                  />
-                </div>
+                <p class="form-subtitle" id="formSubtitle">
+                  Điền mã CODE và tài khoản của bạn để kiểm tra ưu đãi đang áp dụng.
+                </p>
               </div>
 
-              <div class="field">
-                <label for="username">
-                  <span class="label-icon" aria-hidden="true">@</span>
-                  Tài khoản
-                </label>
+              <form class="form" id="codeForm" novalidate>
 
-                <div class="input-wrap">
-                  <input
-                    id="username"
-                    name="username"
-                    type="text"
-                    autocomplete="username"
-                    placeholder="Nhập tài khoản"
-                    maxlength="80"
-                    required
-                  />
+                <div class="field">
+                  <label for="promoCode">
+                    <span class="label-icon" aria-hidden="true">#</span>
+                    Mã CODE
+                  </label>
+
+                  <div class="input-wrap">
+                    <input
+                      id="promoCode"
+                      name="promoCode"
+                      type="text"
+                      autocomplete="off"
+                      placeholder="Nhập mã CODE tại đây"
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <button type="submit" class="submit-btn" id="submitBtn">
-                <span class="button-content">
-                  <span id="submitText">NHẬN THƯỞNG NGAY</span>
-                  <span class="btn-arrow" aria-hidden="true">→</span>
-                </span>
-              </button>
+                <div class="field">
+                  <label for="username">
+                    <span class="label-icon" aria-hidden="true">👤</span>
+                    Tên tài khoản
+                  </label>
+
+                  <div class="input-wrap">
+                    <input
+                      id="username"
+                      name="username"
+                      type="text"
+                      autocomplete="off"
+                      placeholder="Nhập tên tài khoản JUN88"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                  <span class="button-content">
+                    <span>NHẬN THƯỞNG NGAY</span>
+                    <span class="btn-arrow" aria-hidden="true">➔</span>
+                  </span>
+                </button>
+
+                <div class="status-message" id="statusMessage" role="status" aria-live="polite"></div>
+
+              </form>
 
               <div class="helper-links">
-                <a class="helper-link" id="detailLink" href="#" target="_blank" rel="noopener noreferrer">
-                  <span>CHI TIẾT</span>
-                  <span class="helper-icon" aria-hidden="true">→</span>
+                <a href="#" class="helper-link" target="_blank" rel="noopener noreferrer">
+                  <span>ĐĂNG KÝ NGAY</span>
+                  <span class="helper-icon">➜</span>
                 </a>
-
-                <a class="helper-link" id="codePageLink" href="#" target="_blank" rel="noopener noreferrer">
-                  <span>Trang phát code</span>
-                  <span class="helper-icon" aria-hidden="true">→</span>
+                <a href="#" class="helper-link" target="_blank" rel="noopener noreferrer">
+                  <span>HỖ TRỢ 24/7</span>
+                  <span class="helper-icon">💬</span>
                 </a>
               </div>
 
-              <div class="status-message" id="statusMessage" role="status" aria-live="polite"></div>
+              <div class="form-note">
+                <span class="secure">🔒 BẢO MẬT 100%</span>
+                <span>Mọi thông tin nhận thưởng được bảo mật tuyệt đối theo tiêu chuẩn mã hóa SSL.</span>
+              </div>
 
-              <p class="form-note">
-                <span class="secure">● BẢO MẬT</span>
-                <span>Thông tin được sử dụng để kiểm tra chương trình ưu đãi. Template hiện chỉ mô phỏng giao diện và chưa gửi dữ liệu tới máy chủ.</span>
-              </p>
-            </form>
-
+            </div>
           </div>
+
         </div>
 
       </div>
@@ -1414,121 +1105,28 @@
   </main>
 
   <script>
-    /* =========================================================
-       CONFIG - CHỈNH PHẦN NÀY KHI NHÂN BẢN TEMPLATE
-       ========================================================= */
-    const CONFIG = {
-      // ===== 1) NHẬN DIỆN THƯƠNG HIỆU =====
-      brand: {
-        name: "JUN88",
-        eyebrow: "NHẬN CODE - NHẬN THƯỞNG MỖI NGÀY",
-        formTitle: "NHẬP CODE",
-        formTitleAccent: "NHẬN THƯỞNG",
-        subtitle: "Điền mã CODE và tài khoản của bạn để kiểm tra ưu đãi đang áp dụng.",
-        logoText: "J"
-      },
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("codeForm");
+      const statusMsg = document.getElementById("statusMessage");
 
-      // ===== 2) TOÀN BỘ LINK CTA — CHỈ SỬA TẠI ĐÂY =====
-      links: {
-        // Tập trung TẤT CẢ link CTA ở đây:
-        register: "https://example.com/dang-ky",
-        detail: "https://example.com/chi-tiet-chuong-trinh",
-        codePage: "https://example.com/trang-phat-code"
-      },
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const codeInput = document.getElementById("promoCode");
+          const userInput = document.getElementById("username");
 
-      // ===== 3) MÀU SẮC — ĐỔI Ở ĐÂY ĐỂ NHÂN BẢN SITE =====
-      theme: {
-        primary: "#079fd2",
-        primaryDark: "#087ea9",
-        primaryDeep: "#056486",
-        accent: "#77ebff",
-        background: "#eefcff"
-      },
+          if (!codeInput.value.trim() || !userInput.value.trim()) {
+            statusMsg.textContent = "Vui lòng điền đầy đủ Mã CODE và Tên tài khoản!";
+            statusMsg.style.color = "var(--danger)";
+            statusMsg.classList.add("show");
+            return;
+          }
 
-      messages: {
-        emptyCode: "Vui lòng nhập mã CODE.",
-        emptyUser: "Vui lòng nhập tài khoản.",
-        success: "Đã nhận thông tin. Hệ thống đang kiểm tra ưu đãi…"
+          statusMsg.textContent = "Gửi yêu cầu nhận thưởng thành công! Đang xử lý...";
+          statusMsg.style.color = "var(--success)";
+          statusMsg.classList.add("show");
+        });
       }
-    };
-
-    /* ===== ÁP CONFIG VÀO GIAO DIỆN ===== */
-    const root = document.documentElement;
-
-    root.style.setProperty("--primary", CONFIG.theme.primary);
-    root.style.setProperty("--primary-dark", CONFIG.theme.primaryDark);
-    root.style.setProperty("--primary-deep", CONFIG.theme.primaryDeep);
-    root.style.setProperty("--accent", CONFIG.theme.accent);
-    root.style.setProperty("--bg", CONFIG.theme.background);
-
-    document.title = `${CONFIG.brand.name} - ${CONFIG.brand.formTitle} ${CONFIG.brand.formTitleAccent}`;
-    document.getElementById("brandName").innerHTML = `
-      <div class="brand-mark" aria-hidden="true"><span>${CONFIG.brand.logoText}</span></div>
-      <span>${CONFIG.brand.name}</span>
-    `;
-    document.getElementById("brandName").setAttribute("aria-label", CONFIG.brand.name);
-    document.getElementById("heroEyebrow").textContent = CONFIG.brand.eyebrow;
-    document.getElementById("code-title").innerHTML = `
-      ${CONFIG.brand.formTitle}
-      <span>${CONFIG.brand.formTitleAccent}</span>
-    `;
-    document.getElementById("formSubtitle").textContent = CONFIG.brand.subtitle;
-
-    document.getElementById("detailLink").href = CONFIG.links.detail;
-    document.getElementById("codePageLink").href = CONFIG.links.codePage;
-
-    /* ===== FORM DEMO ===== */
-    const form = document.getElementById("codeForm");
-    const codeInput = document.getElementById("promoCode");
-    const usernameInput = document.getElementById("username");
-    const submitBtn = document.getElementById("submitBtn");
-    const submitText = document.getElementById("submitText");
-    const statusMessage = document.getElementById("statusMessage");
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const code = codeInput.value.trim();
-      const username = usernameInput.value.trim();
-
-      statusMessage.classList.remove("show");
-      statusMessage.textContent = "";
-
-      if (!code) {
-        statusMessage.textContent = CONFIG.messages.emptyCode;
-        statusMessage.style.color = "#d84f4f";
-        statusMessage.classList.add("show");
-        codeInput.focus();
-        return;
-      }
-
-      if (!username) {
-        statusMessage.textContent = CONFIG.messages.emptyUser;
-        statusMessage.style.color = "#d84f4f";
-        statusMessage.classList.add("show");
-        usernameInput.focus();
-        return;
-      }
-
-      const originalText = "NHẬN THƯỞNG NGAY";
-      submitBtn.disabled = true;
-      submitText.textContent = "ĐANG KIỂM TRA...";
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitText.textContent = originalText;
-
-        statusMessage.textContent = CONFIG.messages.success;
-        statusMessage.style.color = "#10a981";
-        statusMessage.classList.add("show");
-      }, 900);
-    });
-
-    /* ===== TỰ ĐỘNG XÓA THÔNG BÁO KHI NGƯỜI DÙNG GÕ ===== */
-    [codeInput, usernameInput].forEach((input) => {
-      input.addEventListener("input", () => {
-        statusMessage.classList.remove("show");
-      });
     });
   </script>
 </body>
