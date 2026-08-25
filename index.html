@@ -11,18 +11,17 @@
   <style>
     /* =========================================================
        JUN88 SINGLE SECTION TEMPLATE
-       Chỉ cần sửa CONFIG ở cuối file để nhân bản site.
        ========================================================= */
 
     :root {
       /* =========================================================
-         HƯỚNG DẪN CHÈN HÌNH NỀN (BACKGROUND IMAGE):
+         [1] VỊ TRÍ THAY HÌNH NỀN TRANG (BACKGROUND IMAGE):
          - Điền đường dẫn ảnh vào biến --bg-image bên dưới.
-         - Ví dụ dùng ảnh nội bộ: --bg-image: url('background.jpg');
-         - Ví dụ dùng link ảnh online: --bg-image: url('https://domain.com/bg-jun88.jpg');
-         - Nếu để `none` hoặc `url('')`: Trang sẽ dùng nền gradient xanh mượt mặc định.
+         - Ví dụ dùng ảnh cùng thư mục: --bg-image: url('bg-jun88.jpg');
+         - Ví dụ dùng link ảnh online:  --bg-image: url('https://link-anh.com/bg.jpg');
+         - Nếu để `none`: Trang sẽ tự dùng nền gradient xanh mượt.
          ========================================================= */
-      --bg-image: url('https://i.pinimg.com/736x/75/2c/8e/752c8e7e20195797d9e8c03d8561c0bf.jpg'); 
+      --bg-image: none; 
       --bg-overlay-color: rgba(238, 252, 255, 0.65); /* Lớp phủ mờ giúp nổi bật nội dung trên ảnh nền */
 
       --primary: #079fd2;
@@ -85,7 +84,6 @@
       cursor: pointer;
     }
 
-    /* ===== BACKGROUND ===== */
     .page {
       position: relative;
       min-height: 100vh;
@@ -143,7 +141,6 @@
         linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
     }
 
-    /* ===== SECTION 1 & SECTION 2 LAYOUT STRUCTURE ===== */
     .code-section {
       width: 100%;
       min-height: 100vh;
@@ -279,176 +276,149 @@
     .visual-column {
       width: 100%;
       min-width: 0;
-      min-height: 520px;
-      padding: 0;
+      min-height: 560px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: visible;
     }
 
-    .visual-glow {
+    .hero-stage {
+      position: relative;
+      width: min(100%, 640px);
+      height: 540px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Vòng tròn xanh nhạt tỏa sáng - Căn chính giữa chuẩn 100% sau lưng hình người */
+    .circle-backdrop {
       position: absolute;
-      width: min(80%, 620px);
-      aspect-ratio: 1;
+      width: clamp(320px, 82%, 460px);
+      height: clamp(320px, 82%, 460px);
       border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(73, 222, 250, 0.42) 0%, rgba(73, 222, 250, 0.20) 34%, rgba(73, 222, 250, 0) 72%);
-      filter: blur(12px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at 35% 35%, #e1f9ff 0%, #a2edff 50%, #3cd0f2 100%);
+      border: 6px solid rgba(255, 255, 255, 0.95);
+      box-shadow:
+        0 0 50px rgba(7, 159, 210, 0.38),
+        inset 0 0 30px rgba(255, 255, 255, 0.85);
+      z-index: 1;
       animation: breathe 5s ease-in-out infinite;
     }
 
-    .visual-ring {
+    .circle-backdrop::before {
+      content: "";
       position: absolute;
-      width: min(75%, 560px);
-      aspect-ratio: 1;
+      inset: -18px;
       border-radius: 50%;
-      border: 1px solid rgba(4, 156, 202, 0.20);
-      box-shadow:
-        0 0 0 26px rgba(255,255,255,0.25),
-        inset 0 0 45px rgba(26, 201, 239, 0.12);
+      border: 2px dashed rgba(7, 159, 210, 0.45);
+      animation: spinRing 25s linear infinite;
     }
 
-    .visual-card {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 720px;
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 42px;
-      padding: 20px;
+    @keyframes spinRing {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
     }
 
+    /* Thẻ ảnh nhân vật chính - Kích thước to hơn & căn chuẩn center */
     .visual-image {
-      width: min(100%, 700px);
-      height: auto;
-      max-height: 700px;
+      position: relative;
+      z-index: 3;
+      width: auto;
+      max-width: 95%;
+      max-height: 470px;
       object-fit: contain;
-      filter:
-        drop-shadow(0 32px 28px rgba(3, 93, 121, 0.19))
-        drop-shadow(0 0 28px rgba(71, 220, 250, 0.16));
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 20px 30px rgba(3, 93, 121, 0.28));
       animation: floatVisual 6s ease-in-out infinite;
       user-select: none;
       -webkit-user-drag: none;
     }
 
-    .fallback-visual {
-      position: relative;
-      width: min(100%, 620px);
-      height: min(100%, 540px);
-      aspect-ratio: 1 / 0.88;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
-    }
-
     .platform {
       position: absolute;
       left: 50%;
-      width: 78%;
-      height: 18%;
-      bottom: 8%;
+      width: 80%;
+      height: 16%;
+      bottom: 4%;
+      z-index: 2;
       border-radius: 50%;
-      background:
-        linear-gradient(180deg, #faffff 0%, #b8ebf6 47%, #72d3e8 100%);
+      background: linear-gradient(180deg, #faffff 0%, #b8ebf6 47%, #72d3e8 100%);
       border: 4px solid #a1e5f3;
       box-shadow:
-        0 18px 36px rgba(0, 130, 170, 0.18),
-        inset 0 4px 0 rgba(255,255,255,.82);
+        0 18px 36px rgba(0, 130, 170, 0.2),
+        inset 0 4px 0 rgba(255, 255, 255, 0.85);
       transform: translateX(-50%) perspective(300px) rotateX(62deg);
       transform-origin: center center;
     }
 
-    .visual-person {
-      position: absolute;
-      left: 50%;
-      bottom: 17%;
-      width: 60%;
-      height: 64%;
-      border-radius: 45% 45% 28% 28%;
-      background:
-        linear-gradient(160deg, #f8d1bc 0 12%, #151d25 12% 55%, #091722 55% 100%);
-      box-shadow: 18px 16px 30px rgba(0, 80, 110, 0.22);
-      transform: translateX(-50%) rotate(-4deg);
-      transform-origin: center bottom;
-    }
-
-    .visual-person::before {
-      content: "";
-      position: absolute;
-      width: 29%;
-      aspect-ratio: 1;
-      left: 24%;
-      top: -10%;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 58% 40%, #f4c5ad 0 48%, #272329 49% 65%, transparent 66%);
-      box-shadow: 45px -3px 0 -9px #242027;
-    }
-
+    /* Các phần quà và thẻ vé vây xung quanh */
     .visual-ticket {
       position: absolute;
       z-index: 6;
-      width: 148px;
-      height: 72px;
-      left: 8%;
-      top: 31%;
-      border-radius: 18px;
+      width: 130px;
+      height: 64px;
+      left: 0%;
+      top: 18%;
+      border-radius: 16px;
       background: linear-gradient(135deg, #ffc82e, #fff097);
       color: #8d3a00;
       display: grid;
       place-items: center;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 900;
       transform: rotate(-12deg);
-      box-shadow: 0 18px 28px rgba(188, 125, 0, 0.20);
+      box-shadow: 0 16px 28px rgba(188, 125, 0, 0.25);
       animation: ticketFloat 4.5s ease-in-out infinite;
     }
 
     .visual-ticket.right {
       left: auto;
-      right: 6%;
-      top: 47%;
-      transform: rotate(11deg) scale(0.82);
+      right: 0%;
+      top: 32%;
+      transform: rotate(11deg) scale(0.92);
       animation-delay: -1.2s;
     }
 
     .gift {
       position: absolute;
-      z-index: 5;
-      bottom: 17%;
-      left: 10%;
-      width: 110px;
-      height: 85px;
-      border-radius: 18px;
+      z-index: 6;
+      bottom: 8%;
+      left: 3%;
+      width: 100px;
+      height: 78px;
+      border-radius: 16px;
       background:
         linear-gradient(90deg, transparent 42%, #d8fbff 42% 58%, transparent 58%),
         linear-gradient(#f5fdff, #c5eff8);
       border: 3px solid #85dced;
-      box-shadow: 0 18px 28px rgba(0, 114, 150, 0.15);
+      box-shadow: 0 16px 26px rgba(0, 114, 150, 0.2);
       transform: rotate(-9deg);
+      animation: floatVisual 5s ease-in-out infinite reverse;
     }
 
     .gift::before {
       content: "";
       position: absolute;
-      left: -5px;
-      right: -5px;
-      top: 21px;
-      height: 18px;
-      border-radius: 8px;
+      left: -4px;
+      right: -4px;
+      top: 18px;
+      height: 16px;
+      border-radius: 6px;
       background: linear-gradient(90deg, #86e0ef, #d6fbff, #86e0ef);
     }
 
     .gift.right {
       left: auto;
-      right: 8%;
-      bottom: 20%;
-      transform: rotate(9deg) scale(0.9);
+      right: 3%;
+      bottom: 10%;
+      transform: rotate(9deg) scale(0.92);
     }
 
     /* ===== RIGHT FORM COLUMN ===== */
@@ -469,7 +439,7 @@
       padding: 34px;
       border-radius: var(--radius-xl);
       background:
-        linear-gradient(145deg, rgba(255,255,255,.93), rgba(232,250,255,.78));
+        linear-gradient(145deg, rgba(255,255,255,.94), rgba(232,250,255,.82));
       border: 2px solid rgba(4, 154, 198, 0.55);
       box-shadow:
         var(--shadow-lg),
@@ -496,8 +466,8 @@
 
     .form-kicker {
       display: inline-block;
-      margin-bottom: 8px;
-      padding: 7px 14px;
+      margin-bottom: 10px;
+      padding: 7px 16px;
       border-radius: 999px;
       color: white;
       font-size: 11px;
@@ -508,85 +478,41 @@
       box-shadow: 0 10px 22px rgba(0, 147, 194, 0.20);
     }
 
+    /* GRADIENT TEXT MỚI CỰC KỲ NỔI BẬT DÀNH CHO "NHẬP CODE NHẬN THƯỞNG" */
     .form-title {
       position: relative;
       margin: 0;
-      background:
-        linear-gradient(
-          180deg,
-          #ffe88a 0%,
-          #ffc62e 24%,
-          #10c6ec 58%,
-          #078fca 80%,
-          #045f91 100%
-        );
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.1;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      /* Dòng 1: Gradient Xanh Băng đậm nổi bật */
+      background: linear-gradient(180deg, #056285 0%, #0093c4 50%, #024561 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      font-size: clamp(34px, 3.5vw, 56px);
-      line-height: 1.05;
-      font-weight: 1000;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-      filter:
-        drop-shadow(0 3px 0 rgba(255,255,255,.95))
-        drop-shadow(0 8px 0 rgba(7, 112, 153, .10))
-        drop-shadow(0 12px 24px rgba(0, 111, 156, .22));
-    }
-
-    .form-title::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(100deg, transparent 10%, rgba(255,255,255,.90) 45%, transparent 68%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      mix-blend-mode: screen;
-      opacity: .55;
-      animation: titleShimmer 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .form-title::after {
-      content: "";
-      position: absolute;
-      left: 4%;
-      right: 4%;
-      bottom: -13px;
-      height: 24px;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse,
-        rgba(255, 195, 37, .34) 0%,
-        rgba(22, 193, 232, .24) 42%,
-        transparent 74%
-      );
-      filter: blur(9px);
-      z-index: -1;
+      filter: drop-shadow(0 3px 6px rgba(4, 82, 114, 0.22));
     }
 
     .form-title span {
       display: block;
-      background:
-        linear-gradient(
-          180deg,
-          #ffe58a 0%,
-          #ffbf1f 25%,
-          #15c9ef 58%,
-          #0793c9 80%,
-          #055d8d 100%
-        );
+      margin-top: 2px;
+      /* Dòng 2: Gradient VÀNG ÁNH KIM - GOLD KHUYẾN MÃI RỰC RỠ */
+      background: linear-gradient(180deg, #FFE770 0%, #FFB700 45%, #E65100 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(120, 50, 0, 0.35));
       position: relative;
     }
 
     .form-subtitle {
-      margin-top: 12px;
+      margin-top: 14px;
       color: var(--text-soft);
       font-size: 14px;
       line-height: 1.65;
+      font-weight: 600;
     }
 
     .form {
@@ -633,7 +559,7 @@
       border: 2px solid rgba(3, 153, 199, 0.34);
       border-radius: 17px;
       color: var(--text);
-      background: rgba(255,255,255,.80);
+      background: rgba(255,255,255,.85);
       outline: none;
       font-size: 16px;
       font-weight: 600;
@@ -835,8 +761,8 @@
     }
 
     @keyframes breathe {
-      0%, 100% { transform: scale(1); opacity: .86; }
-      50% { transform: scale(1.08); opacity: 1; }
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: .86; }
+      50% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
     }
 
     @keyframes ticketFloat {
@@ -852,11 +778,6 @@
     @keyframes pulseArrow {
       0%, 100% { transform: translateX(0); }
       50% { transform: translateX(3px); }
-    }
-
-    @keyframes titleShimmer {
-      0%, 100% { transform: translateX(-35%); opacity: .12; }
-      50% { transform: translateX(28%); opacity: .55; }
     }
 
     @keyframes sparkle {
@@ -887,16 +808,7 @@
       }
 
       .visual-column {
-        min-height: 460px;
-      }
-
-      .visual-card {
-        min-height: 440px;
-      }
-
-      .fallback-visual {
-        width: min(100%, 540px);
-        height: 440px;
+        min-height: 480px;
       }
     }
 
@@ -930,28 +842,22 @@
       }
 
       .visual-column {
-        min-height: 380px;
+        min-height: 400px;
       }
 
-      .visual-card {
-        min-height: 360px;
-        padding: 8px;
-      }
-
-      .fallback-visual {
-        width: 100%;
-        height: 360px;
+      .hero-stage {
+        height: 400px;
       }
 
       .visual-ticket {
-        width: 110px;
-        height: 56px;
-        font-size: 18px;
+        width: 105px;
+        height: 52px;
+        font-size: 17px;
       }
 
       .gift {
-        width: 85px;
-        height: 65px;
+        width: 80px;
+        height: 62px;
       }
 
       .form-shell {
@@ -994,6 +900,15 @@
         <!-- ========================= SECTION 1: TOP HERO (CANH GIỮA 100%) ========================= -->
         <div class="top-section">
           <div class="hero-copy">
+
+            <!-- 
+              =========================================================
+              [2] VỊ TRÍ THAY LOGO (BRAND LOGO):
+              - Mặc định đang dùng biểu tượng chữ J bằng HTML/CSS.
+              - Nếu muốn thay bằng ẢNH LOGO THẬT, bạn bỏ thẻ <div class="brand-mark"> 
+                và thêm: <img src="logo-jun88.png" style="height: 50px; width: auto;" alt="Logo JUN88" />
+              =========================================================
+            -->
             <div class="brand" id="brandName" aria-label="JUN88">
               <div class="brand-mark" aria-hidden="true"><span>J</span></div>
               <span>JUN88</span>
@@ -1012,111 +927,91 @@
         <!-- ========================= SECTION 2: CONTENT SECTION (2 CỘT TRÁI - PHẢI) ========================= -->
         <div class="content-section">
 
-          <!-- CỘT BÊN TRÁI: Hình ảnh người, hình ảnh code & quà tặng -->
+          <!-- CỘT BÊN TRÁI: Hình ảnh người, vòng tròn xanh tỏa sáng & quà tặng -->
           <div class="visual-column">
-            <div class="visual-glow" aria-hidden="true"></div>
-            <div class="visual-ring" aria-hidden="true"></div>
+            <div class="hero-stage">
+              <!-- Vòng tròn xanh nhạt tỏa sáng - Căn chuẩn center 100% sau lưng hình người -->
+              <div class="circle-backdrop" aria-hidden="true"></div>
 
-            <div class="visual-card">
-  <img class="visual-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm1FbmV6kiyosepQjwN789eCc3oecNBNV5H41PwEc4cw&s=10" alt="JUN88 Nhận Code Thưởng" />
-</div>
-              <!--
-                ĐỂ DÙNG ẢNH THẬT:
-                thay src bằng đường dẫn ảnh của bạn, ví dụ:
-                <img class="visual-image" src="jun88-hero.png" alt="JUN88 - nhận code thưởng" />
+              <!-- 
+                =========================================================
+                [3] VỊ TRÍ THAY HÌNH ẢNH NHÂN VẬT / CẦU THỦ / KHUYẾN MÃI:
+                - Thay link ảnh của bạn vào thuộc tính `src="..."` bên dưới.
+                =========================================================
               -->
-                <div class="visual-person"></div>
-                <div class="gift"></div>
-                <div class="gift right"></div>
-                <div class="visual-ticket">CODE</div>
-                <div class="visual-ticket right">BONUS</div>
-                <div class="platform"></div>
-              </div>
+              <img class="visual-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm1FbmV6kiyosepQjwN789eCc3oecNBNV5H41PwEc4cw&s=10" alt="JUN88 - Nhận Code Thưởng" id="realVisualImg" />
+
+              <!-- Thẻ vé CODE / BONUS vây xung quanh -->
+              <div class="visual-ticket">CODE</div>
+              <div class="visual-ticket right">BONUS</div>
+
+              <!-- Hộp quà tặng vây xung quanh -->
+              <div class="gift"></div>
+              <div class="gift right"></div>
+
+              <!-- Bệ nâng dưới chân -->
+              <div class="platform"></div>
             </div>
           </div>
 
           <!-- CỘT BÊN PHẢI: Biểu mẫu Nhập code nhận thưởng -->
           <div class="form-column">
             <div class="form-shell">
-
               <div class="form-head">
-                <span class="form-kicker">ƯU ĐÃI DÀNH CHO THÀNH VIÊN</span>
-
+                <span class="form-kicker">MÃ CODE CÓ HẠN</span>
                 <h1 class="form-title" id="code-title">
                   NHẬP CODE
                   <span>NHẬN THƯỞNG</span>
                 </h1>
-
-                <p class="form-subtitle" id="formSubtitle">
-                  Điền mã CODE và tài khoản của bạn để kiểm tra ưu đãi đang áp dụng.
-                </p>
+                <p class="form-subtitle">Điền mã CODE và tên tài khoản JUN88 của bạn để nhận quà thưởng ngay lập tức.</p>
               </div>
 
-              <form class="form" id="codeForm" novalidate>
-
+              <form class="form" id="codeForm" onsubmit="handleFormSubmit(event)">
                 <div class="field">
-                  <label for="promoCode">
-                    <span class="label-icon" aria-hidden="true">#</span>
-                    Mã CODE
+                  <label for="codeInputValue">
+                    <span class="label-icon">#</span>
+                    MÃ CODE
                   </label>
-
                   <div class="input-wrap">
-                    <input
-                      id="promoCode"
-                      name="promoCode"
-                      type="text"
-                      autocomplete="off"
-                      placeholder="Nhập mã CODE tại đây"
-                      required
-                    />
+                    <input type="text" id="codeInputValue" placeholder="Nhập mã CODE nhận thưởng..." required autocomplete="off" />
                   </div>
                 </div>
 
                 <div class="field">
-                  <label for="username">
-                    <span class="label-icon" aria-hidden="true">👤</span>
-                    Tên tài khoản
+                  <label for="usernameInputValue">
+                    <span class="label-icon">👤</span>
+                    TÊN TÀI KHOẢN
                   </label>
-
                   <div class="input-wrap">
-                    <input
-                      id="username"
-                      name="username"
-                      type="text"
-                      autocomplete="off"
-                      placeholder="Nhập tên tài khoản JUN88"
-                      required
-                    />
+                    <input type="text" id="usernameInputValue" placeholder="Nhập tên tài khoản JUN88..." required autocomplete="off" />
                   </div>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">
+                <button class="submit-btn" type="submit">
                   <span class="button-content">
                     <span>NHẬN THƯỞNG NGAY</span>
-                    <span class="btn-arrow" aria-hidden="true">➔</span>
+                    <span class="btn-arrow">➔</span>
                   </span>
                 </button>
 
-                <div class="status-message" id="statusMessage" role="status" aria-live="polite"></div>
-
+                <div class="status-message" id="statusMsg"></div>
               </form>
 
               <div class="helper-links">
-                <a href="#" class="helper-link" target="_blank" rel="noopener noreferrer">
+                <a href="#" class="helper-link" onclick="event.preventDefault(); alert('Chuyển hướng đến trang Đăng ký tài khoản JUN88');">
                   <span>ĐĂNG KÝ NGAY</span>
-                  <span class="helper-icon">➜</span>
+                  <span class="helper-icon">➕</span>
                 </a>
-                <a href="#" class="helper-link" target="_blank" rel="noopener noreferrer">
-                  <span>HỖ TRỢ 24/7</span>
+                <a href="#" class="helper-link" onclick="event.preventDefault(); alert('Kết nối bộ phận hỗ trợ CSKH 24/7');">
+                  <span>HỖ TRỢ CSKH</span>
                   <span class="helper-icon">💬</span>
                 </a>
               </div>
 
               <div class="form-note">
                 <span class="secure">🔒 BẢO MẬT 100%</span>
-                <span>Mọi thông tin nhận thưởng được bảo mật tuyệt đối theo tiêu chuẩn mã hóa SSL.</span>
+                <span>Mọi thông tin nhận code được hệ thống JUN88 bảo vệ tuyệt đối.</span>
               </div>
-
             </div>
           </div>
 
@@ -1127,29 +1022,25 @@
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("codeForm");
-      const statusMsg = document.getElementById("statusMessage");
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const codeInput = document.getElementById('codeInputValue').value.trim();
+      const usernameInput = document.getElementById('usernameInputValue').value.trim();
+      const statusMsg = document.getElementById('statusMsg');
 
-      if (form) {
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const codeInput = document.getElementById("promoCode");
-          const userInput = document.getElementById("username");
+      if (!codeInput || !usernameInput) return;
 
-          if (!codeInput.value.trim() || !userInput.value.trim()) {
-            statusMsg.textContent = "Vui lòng điền đầy đủ Mã CODE và Tên tài khoản!";
-            statusMsg.style.color = "var(--danger)";
-            statusMsg.classList.add("show");
-            return;
-          }
+      statusMsg.textContent = '🎉 Gửi yêu cầu nhận Code thành công cho tài khoản: ' + usernameInput;
+      statusMsg.classList.add('show');
 
-          statusMsg.textContent = "Gửi yêu cầu nhận thưởng thành công! Đang xử lý...";
-          statusMsg.style.color = "var(--success)";
-          statusMsg.classList.add("show");
-        });
-      }
-    });
+      setTimeout(() => {
+        document.getElementById('codeForm').reset();
+        setTimeout(() => {
+          statusMsg.classList.remove('show');
+        }, 4000);
+      }, 500);
+    }
   </script>
 </body>
 </html>
