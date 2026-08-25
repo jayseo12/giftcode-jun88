@@ -1,0 +1,1535 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#effcff" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="JUN88 - Nhập mã CODE nhận thưởng. Giao diện landing page một section tối ưu cho chiến dịch nhận code." />
+  <title>JUN88 - Nhập Code Nhận Thưởng</title>
+
+  <style>
+    /* =========================================================
+       JUN88 SINGLE SECTION TEMPLATE
+       Chỉ cần sửa CONFIG ở cuối file để nhân bản site.
+       ========================================================= */
+
+    :root {
+      --primary: #079fd2;
+      --primary-dark: #087ea9;
+      --primary-deep: #056486;
+      --accent: #77ebff;
+      --accent-soft: #dff9ff;
+
+      --bg: #eefcff;
+      --bg-2: #d8f5fb;
+      --surface: rgba(255, 255, 255, 0.80);
+      --surface-solid: #ffffff;
+
+      --text: #073649;
+      --text-soft: #557482;
+      --border: rgba(7, 159, 210, 0.32);
+
+      --success: #10a981;
+      --danger: #d84f4f;
+
+      --shadow-lg: 0 26px 70px rgba(2, 104, 140, 0.18);
+      --shadow-md: 0 16px 40px rgba(2, 104, 140, 0.12);
+
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+
+      --container: 1440px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Be Vietnam Pro", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(114, 236, 255, 0.70), transparent 24%),
+        radial-gradient(circle at 92% 22%, rgba(255, 255, 255, 0.98), transparent 26%),
+        radial-gradient(circle at 75% 100%, rgba(98, 224, 255, 0.35), transparent 30%),
+        linear-gradient(135deg, #f8ffff 0%, var(--bg) 42%, #d8f4fb 100%);
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* ===== BACKGROUND ===== */
+    .page {
+      position: relative;
+      min-height: 100vh;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .page::before {
+      width: 780px;
+      height: 780px;
+      left: -230px;
+      top: -260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(86, 223, 250, 0.40), rgba(86, 223, 250, 0) 70%);
+      filter: blur(8px);
+    }
+
+    .page::after {
+      width: 900px;
+      height: 600px;
+      right: -320px;
+      bottom: -260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(38, 184, 230, 0.30), rgba(38, 184, 230, 0) 70%);
+      filter: blur(14px);
+    }
+
+    .grid-lines {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.38;
+      pointer-events: none;
+      background:
+        linear-gradient(118deg, transparent 0 27%, rgba(4, 149, 191, 0.08) 27.15%, transparent 27.4% 100%),
+        linear-gradient(62deg, transparent 0 63%, rgba(4, 149, 191, 0.07) 63.15%, transparent 63.4% 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+    }
+
+    /* ===== SECTION ===== */
+    .code-section {
+      width: min(100%, var(--container));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 42px 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-inner {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 84px);
+      padding-top: 150px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(430px, 0.96fr);
+      gap: clamp(30px, 4vw, 78px);
+      align-items: center;
+    }
+
+    /* ===== LEFT VISUAL ===== */
+    .visual-column {
+      grid-column: 1;
+      grid-row: 2;
+      position: relative;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 26px 0;
+    }
+
+    .visual-glow {
+      position: absolute;
+      width: min(42vw, 620px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(73, 222, 250, 0.42) 0%, rgba(73, 222, 250, 0.20) 34%, rgba(73, 222, 250, 0) 72%);
+      filter: blur(12px);
+      animation: breathe 5s ease-in-out infinite;
+    }
+
+    .visual-ring {
+      position: absolute;
+      width: min(38vw, 560px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(4, 156, 202, 0.20);
+      box-shadow:
+        0 0 0 26px rgba(255,255,255,0.25),
+        inset 0 0 45px rgba(26, 201, 239, 0.12);
+    }
+
+    .visual-card {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 720px);
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 42px;
+      padding: 28px;
+    }
+
+    .visual-image {
+      width: min(100%, 700px);
+      height: auto;
+      max-height: 700px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 32px 28px rgba(3, 93, 121, 0.19))
+        drop-shadow(0 0 28px rgba(71, 220, 250, 0.16));
+      animation: floatVisual 6s ease-in-out infinite;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .fallback-visual {
+      width: min(88%, 600px);
+      aspect-ratio: 1 / 0.92;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .platform {
+      position: absolute;
+      width: 78%;
+      height: 18%;
+      bottom: 8%;
+      border-radius: 50%;
+      background:
+        linear-gradient(180deg, #faffff 0%, #b8ebf6 47%, #72d3e8 100%);
+      border: 4px solid #a1e5f3;
+      box-shadow:
+        0 18px 36px rgba(0, 130, 170, 0.18),
+        inset 0 4px 0 rgba(255,255,255,.82);
+      transform: perspective(300px) rotateX(62deg);
+    }
+
+    .visual-person {
+      position: absolute;
+      bottom: 17%;
+      width: 62%;
+      height: 64%;
+      border-radius: 45% 45% 28% 28%;
+      background:
+        linear-gradient(160deg, #f8d1bc 0 12%, #151d25 12% 55%, #091722 55% 100%);
+      box-shadow: 18px 16px 30px rgba(0, 80, 110, 0.22);
+      transform: rotate(-4deg);
+    }
+
+    .visual-person::before {
+      content: "";
+      position: absolute;
+      width: 29%;
+      aspect-ratio: 1;
+      left: 24%;
+      top: -10%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 58% 40%, #f4c5ad 0 48%, #272329 49% 65%, transparent 66%);
+      box-shadow: 45px -3px 0 -9px #242027;
+    }
+
+    .visual-ticket {
+      position: absolute;
+      z-index: 3;
+      width: 150px;
+      height: 72px;
+      left: 7%;
+      top: 31%;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffc82e, #fff097);
+      color: #8d3a00;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 900;
+      transform: rotate(-12deg);
+      box-shadow: 0 18px 28px rgba(188, 125, 0, 0.20);
+      animation: ticketFloat 4.5s ease-in-out infinite;
+    }
+
+    .visual-ticket.right {
+      left: auto;
+      right: 4%;
+      top: 47%;
+      transform: rotate(11deg) scale(0.82);
+      animation-delay: -1.2s;
+    }
+
+    .gift {
+      position: absolute;
+      bottom: 17%;
+      left: 8%;
+      width: 120px;
+      height: 90px;
+      border-radius: 18px;
+      background:
+        linear-gradient(90deg, transparent 42%, #d8fbff 42% 58%, transparent 58%),
+        linear-gradient(#f5fdff, #c5eff8);
+      border: 3px solid #85dced;
+      box-shadow: 0 18px 28px rgba(0, 114, 150, 0.15);
+      transform: rotate(-9deg);
+    }
+
+    .gift::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      right: -5px;
+      top: 21px;
+      height: 18px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #86e0ef, #d6fbff, #86e0ef);
+    }
+
+    .gift.right {
+      left: auto;
+      right: 7%;
+      bottom: 22%;
+      transform: rotate(9deg) scale(0.9);
+    }
+
+    .hero-copy {
+      grid-column: 1 / -1;
+      position: relative;
+      width: 100%;
+      padding: 2px 20px 0;
+      text-align: center;
+      z-index: 20;
+    }
+
+    .brand {
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: var(--primary-deep);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      font-size: clamp(36px, 4vw, 68px);
+      line-height: 1;
+    }
+
+    .brand-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), #54d9f5);
+      color: white;
+      box-shadow: 0 12px 30px rgba(0, 151, 198, 0.25);
+      font-weight: 1000;
+      font-size: 27px;
+      transform: rotate(45deg);
+    }
+
+    .brand-mark span {
+      transform: rotate(-45deg);
+    }
+
+    .eyebrow {
+      margin: 0 auto;
+      font-size: clamp(18px, 1.6vw, 28px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.055em;
+      color: var(--primary);
+      text-wrap: balance;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .trust-pill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(6, 150, 195, 0.18);
+      background: rgba(255,255,255,.60);
+      color: var(--primary-deep);
+      font-weight: 800;
+      font-size: 12px;
+      box-shadow: 0 8px 22px rgba(0, 130, 170, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .content-section {
+      position: relative;
+    }
+
+    .content-section::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -18px;
+      width: min(420px, 70%);
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(7,159,210,.18), transparent);
+      pointer-events: none;
+    }
+
+    /* ===== RIGHT FORM ===== */
+    .form-column {
+      grid-column: 2;
+      grid-row: 2;
+      position: relative;
+      z-index: 5;
+    }
+
+    .form-shell {
+      position: relative;
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.93), rgba(232,250,255,.78));
+      border: 2px solid rgba(4, 154, 198, 0.55);
+      box-shadow:
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255,255,255,.95);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .form-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 95% 0%, rgba(105, 233, 255, .38), transparent 28%),
+        radial-gradient(circle at 5% 100%, rgba(75, 209, 242, .16), transparent 30%);
+    }
+
+    .form-head {
+      position: relative;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .form-kicker {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      box-shadow: 0 10px 22px rgba(0, 147, 194, 0.20);
+    }
+
+    .form-title {
+      position: relative;
+      margin: 0;
+      background:
+        linear-gradient(
+          180deg,
+          #ffe88a 0%,
+          #ffc62e 24%,
+          #10c6ec 58%,
+          #078fca 80%,
+          #045f91 100%
+        );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: clamp(34px, 3.6vw, 60px);
+      line-height: 1.02;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      filter:
+        drop-shadow(0 3px 0 rgba(255,255,255,.95))
+        drop-shadow(0 8px 0 rgba(7, 112, 153, .10))
+        drop-shadow(0 12px 24px rgba(0, 111, 156, .22));
+    }
+
+    .form-title::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 10%, rgba(255,255,255,.90) 45%, transparent 68%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      mix-blend-mode: screen;
+      opacity: .55;
+      animation: titleShimmer 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .form-title::after {
+      content: "";
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      bottom: -13px;
+      height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse,
+        rgba(255, 195, 37, .34) 0%,
+        rgba(22, 193, 232, .24) 42%,
+        transparent 74%
+      );
+      filter: blur(9px);
+      z-index: -1;
+    }
+
+    .form-title span {
+      display: block;
+      background:
+        linear-gradient(
+          180deg,
+          #ffe58a 0%,
+          #ffbf1f 25%,
+          #15c9ef 58%,
+          #0793c9 80%,
+          #055d8d 100%
+        );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+    }
+
+    .form-subtitle {
+      margin-top: 12px;
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .form {
+      position: relative;
+    }
+
+    .field {
+      margin-top: 18px;
+    }
+
+    .field label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 9px;
+      color: var(--primary-dark);
+      font-size: 15px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .label-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 28px;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #4dd4ef);
+      font-size: 13px;
+      box-shadow: 0 7px 15px rgba(0, 153, 200, .17);
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap input {
+      width: 100%;
+      min-height: 62px;
+      padding: 0 18px;
+      border: 2px solid rgba(3, 153, 199, 0.34);
+      border-radius: 17px;
+      color: var(--text);
+      background: rgba(255,255,255,.80);
+      outline: none;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.95);
+      transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease,
+        background .25s ease;
+    }
+
+    .input-wrap input::placeholder {
+      color: #9baab2;
+      font-weight: 500;
+    }
+
+    .input-wrap input:hover {
+      border-color: rgba(3, 153, 199, 0.55);
+      background: #fff;
+    }
+
+    .input-wrap input:focus {
+      border-color: var(--primary);
+      background: white;
+      box-shadow:
+        0 0 0 5px rgba(7, 159, 210, .11),
+        0 12px 26px rgba(5, 127, 166, .10);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn {
+      position: relative;
+      width: 100%;
+      min-height: 72px;
+      margin-top: 22px;
+      border: 0;
+      border-radius: 19px;
+      overflow: hidden;
+      color: white;
+      background: linear-gradient(135deg, #43d5ee 0%, #0da8d6 48%, #0582ae 100%);
+      font-size: clamp(20px, 2vw, 28px);
+      font-weight: 1000;
+      letter-spacing: .01em;
+      box-shadow:
+        0 16px 32px rgba(0, 138, 183, .27),
+        inset 0 1px 0 rgba(255,255,255,.42);
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        filter .22s ease;
+    }
+
+    .submit-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -38%;
+      width: 30%;
+      transform: skewX(-22deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
+      animation: shine 3.8s ease-in-out infinite;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px) scale(1.005);
+      box-shadow:
+        0 22px 40px rgba(0, 138, 183, .34),
+        0 0 0 5px rgba(66, 210, 238, .10);
+      filter: saturate(1.08);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0) scale(.995);
+    }
+
+    .button-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-arrow {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.20);
+      animation: pulseArrow 2s ease-in-out infinite;
+    }
+
+    .helper-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .helper-link {
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 15px 0 18px;
+      text-decoration: none;
+      border: 1.5px solid rgba(3, 150, 197, .30);
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: rgba(255,255,255,.54);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease,
+        box-shadow .22s ease;
+    }
+
+    .helper-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(3, 150, 197, .58);
+      background: white;
+      box-shadow: 0 12px 24px rgba(2, 130, 169, .11);
+    }
+
+    .helper-icon {
+      width: 29px;
+      height: 29px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 29px;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #43d8ef);
+      box-shadow: 0 6px 14px rgba(0, 148, 194, .18);
+    }
+
+    .form-note {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #6c858f;
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .secure {
+      color: var(--success);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status-message {
+      min-height: 0;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--success);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .status-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== DECORATION ===== */
+    .spark {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 14px rgba(255,255,255,.9), 0 0 24px rgba(42, 207, 241, .65);
+      opacity: .9;
+      animation: sparkle 2.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .spark.s1 { left: 7%; top: 21%; animation-delay: -.4s; }
+    .spark.s2 { left: 19%; top: 76%; animation-delay: -1.5s; transform: scale(.7); }
+    .spark.s3 { left: 74%; top: 17%; animation-delay: -.8s; transform: scale(.6); }
+    .spark.s4 { left: 89%; top: 68%; animation-delay: -.1s; transform: scale(.85); }
+
+    /* ===== ANIMATION ===== */
+    @keyframes floatVisual {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-12px) translateX(4px); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: .86; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    @keyframes ticketFloat {
+      0%, 100% { transform: translateY(0) rotate(-12deg); }
+      50% { transform: translateY(-12px) rotate(-8deg); }
+    }
+
+    @keyframes shine {
+      0%, 30% { left: -38%; }
+      56%, 100% { left: 120%; }
+    }
+
+    @keyframes pulseArrow {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(3px); }
+    }
+
+    @keyframes titleShimmer {
+      0%, 100% { transform: translateX(-35%); opacity: .12; }
+      50% { transform: translateX(28%); opacity: .55; }
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: .25; transform: scale(.65); }
+      50% { opacity: 1; transform: scale(1.18); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1080px) {
+      .code-section {
+        padding: 30px 22px;
+      }
+
+      .section-inner {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 22px;
+      }
+
+      .hero-copy {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .visual-column {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .form-column {
+        grid-column: 1;
+        grid-row: 3;
+      }
+
+      .visual-column {
+        min-height: 570px;
+      }
+
+      .visual-card {
+        min-height: 520px;
+      }
+
+      .form-column {
+        max-width: 700px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .hero-copy {
+        top: 10px;
+      }
+
+      .brand {
+        font-size: clamp(34px, 6vw, 58px);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .code-section {
+        padding: 18px 14px 28px;
+      }
+
+      .section-inner {
+        min-height: auto;
+        padding-top: 138px;
+      }
+
+      .visual-column {
+        min-height: 430px;
+        padding: 0;
+      }
+
+      .visual-card {
+        min-height: 410px;
+        padding: 8px;
+      }
+
+      .visual-ring {
+        width: 86vw;
+      }
+
+      .visual-glow {
+        width: 95vw;
+      }
+
+      .hero-copy {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 0 8px;
+        margin-bottom: 0;
+      }
+
+      .brand {
+        font-size: 42px;
+      }
+
+      .brand-mark {
+        width: 45px;
+        height: 45px;
+        border-radius: 14px;
+        font-size: 21px;
+      }
+
+      .eyebrow {
+        font-size: 15px;
+      }
+
+      .trust-row {
+        margin-top: 14px;
+      }
+
+      .trust-pill {
+        font-size: 10px;
+        padding: 7px 11px;
+      }
+
+      .form-shell {
+        padding: 22px 17px;
+        border-radius: 24px;
+      }
+
+      .form-title {
+        font-size: 34px;
+      }
+
+      .input-wrap input {
+        min-height: 58px;
+      }
+
+      .submit-btn {
+        min-height: 65px;
+        font-size: 21px;
+      }
+
+      .helper-links {
+        grid-template-columns: 1fr;
+      }
+
+      .fallback-visual {
+        width: 100%;
+      }
+
+      .visual-ticket {
+        width: 110px;
+        height: 56px;
+        font-size: 18px;
+      }
+
+      .gift {
+        width: 85px;
+        height: 65px;
+      }
+    }
+  
+    /* =========================================================
+       V6 LAYOUT FIX
+       - Header/logo/H1 = one full-width centered row
+       - Main content = exactly 50/50 two-column grid
+       - Visual stage centered inside left column
+       - Form centered inside right column
+       ========================================================= */
+
+    .code-section {
+      width: 100%;
+      min-height: 100vh;
+      padding: clamp(28px, 3.2vw, 48px) clamp(24px, 4vw, 68px);
+    }
+
+    .section-inner {
+      width: min(100%, 1540px);
+      min-height: calc(100vh - clamp(56px, 6.4vw, 96px));
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      gap: clamp(22px, 2.5vw, 34px);
+    }
+
+    .top-section {
+      width: 100%;
+      flex: 0 0 auto;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-copy {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .brand {
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      width: 100%;
+      margin: 14px auto 0;
+      text-align: center;
+    }
+
+    .trust-row {
+      width: 100%;
+      margin: 14px auto 0;
+      justify-content: center;
+    }
+
+    .content-section {
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(28px, 3.6vw, 64px);
+      align-items: center;
+      justify-content: stretch;
+    }
+
+    .content-section::before {
+      left: 50%;
+      top: -12px;
+      width: min(460px, 55%);
+    }
+
+    .visual-column {
+      width: 100%;
+      min-width: 0;
+      min-height: 0;
+      height: 100%;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+    }
+
+    .visual-glow {
+      width: min(70%, 680px);
+      max-width: 680px;
+      min-width: 420px;
+    }
+
+    .visual-ring {
+      width: min(66%, 630px);
+      max-width: 630px;
+      min-width: 390px;
+    }
+
+    .visual-card {
+      width: 100%;
+      max-width: 760px;
+      min-height: 560px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fallback-visual {
+      position: relative;
+      width: min(100%, 720px);
+      height: min(100%, 590px);
+      aspect-ratio: 1 / .86;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .visual-person {
+      left: 50%;
+      bottom: 16%;
+      width: 57%;
+      height: 66%;
+      transform: translateX(-50%) rotate(-4deg);
+      transform-origin: center bottom;
+    }
+
+    .platform {
+      left: 50%;
+      width: 76%;
+      height: 17%;
+      bottom: 7%;
+      transform: translateX(-50%) perspective(300px) rotateX(62deg);
+      transform-origin: center center;
+    }
+
+    .visual-ticket {
+      left: 14%;
+      top: 34%;
+      width: 148px;
+      height: 72px;
+      z-index: 6;
+    }
+
+    .visual-ticket.right {
+      right: 11%;
+      left: auto;
+      top: 48%;
+      z-index: 6;
+    }
+
+    .gift {
+      left: 15%;
+      bottom: 17%;
+      z-index: 5;
+    }
+
+    .gift.right {
+      left: auto;
+      right: 13%;
+      bottom: 20%;
+      z-index: 5;
+    }
+
+    .form-column {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-shell {
+      width: min(100%, 620px);
+      margin: 0 auto;
+    }
+
+    /* Keep the form typography strong but prevent oversized headline
+       from pushing the two-column alignment apart. */
+    .form-title {
+      font-size: clamp(38px, 3.55vw, 58px);
+    }
+
+    /* Desktop/tablet */
+    @media (min-width: 1081px) {
+      .visual-column,
+      .form-column {
+        align-self: stretch;
+      }
+
+      .form-column {
+        display: flex;
+        align-items: center;
+      }
+
+      .visual-card {
+        height: 100%;
+      }
+    }
+
+    /* Tablet */
+    @media (max-width: 1080px) {
+      .section-inner {
+        min-height: auto;
+      }
+
+      .content-section {
+        grid-template-columns: minmax(0, 1fr) minmax(360px, .95fr);
+        gap: 24px;
+      }
+
+      .visual-card {
+        min-height: 500px;
+      }
+
+      .fallback-visual {
+        width: min(100%, 620px);
+        height: 500px;
+      }
+
+      .form-shell {
+        width: 100%;
+      }
+
+      .visual-ticket {
+        width: 128px;
+        height: 64px;
+      }
+    }
+
+    /* Mobile: keep the same logical order, but stack columns cleanly. */
+    @media (max-width: 760px) {
+      .code-section {
+        padding: 22px 14px 28px;
+      }
+
+      .section-inner {
+        gap: 18px;
+      }
+
+      .content-section {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .visual-column {
+        min-height: 420px;
+        height: 420px;
+      }
+
+      .visual-card {
+        min-height: 420px;
+      }
+
+      .fallback-visual {
+        width: 100%;
+        height: 410px;
+      }
+
+      .visual-glow {
+        min-width: 280px;
+        width: 85%;
+      }
+
+      .visual-ring {
+        min-width: 270px;
+        width: 82%;
+      }
+
+      .visual-ticket {
+        width: 108px;
+        height: 55px;
+        font-size: 18px;
+      }
+
+      .form-column {
+        width: 100%;
+      }
+
+      .form-shell {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="grid-lines" aria-hidden="true"></div>
+    <span class="spark s1" aria-hidden="true"></span>
+    <span class="spark s2" aria-hidden="true"></span>
+    <span class="spark s3" aria-hidden="true"></span>
+    <span class="spark s4" aria-hidden="true"></span>
+
+    <section class="code-section" aria-labelledby="code-title">
+      <div class="section-inner">
+
+        <div class="hero-copy">
+          <div class="brand" id="brandName" aria-label="JUN88">
+            <div class="brand-mark" aria-hidden="true"><span>J</span></div>
+            <span>JUN88</span>
+          </div>
+
+          <p class="eyebrow" id="heroEyebrow">NHẬN CODE - NHẬN THƯỞNG MỖI NGÀY</p>
+
+          <div class="trust-row" aria-label="Ưu điểm">
+            <span class="trust-pill">CODE HOT</span>
+            <span class="trust-pill">NHẬN NHANH</span>
+            <span class="trust-pill">HỖ TRỢ 24/7</span>
+          </div>
+        </div>
+
+        <!-- ========================= LEFT: VISUAL ========================= -->
+        <div class="visual-column">
+
+          <div class="visual-glow" aria-hidden="true"></div>
+          <div class="visual-ring" aria-hidden="true"></div>
+
+</div>
+
+          <div class="visual-card">
+
+            <!--
+              ĐỂ DÙNG ẢNH THẬT:
+              thay src bằng đường dẫn ảnh của bạn, ví dụ:
+              <img class="visual-image" src="jun88-hero.png" alt="JUN88 - nhận code thưởng" />
+
+              Mặc định bên dưới dùng hình minh họa CSS để file HTML chạy ngay.
+            -->
+            <div class="fallback-visual" id="fallbackVisual" aria-label="Minh họa nhận code JUN88">
+              <div class="visual-person"></div>
+              <div class="gift"></div>
+              <div class="gift right"></div>
+              <div class="visual-ticket">CODE</div>
+              <div class="visual-ticket right">BONUS</div>
+              <div class="platform"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ========================= RIGHT: CODE FORM ========================= -->
+        <div class="form-column">
+          <div class="form-shell">
+
+            <div class="form-head">
+              <span class="form-kicker">ƯU ĐÃI DÀNH CHO THÀNH VIÊN</span>
+
+              <h1 class="form-title" id="code-title">
+                NHẬP CODE
+                <span>NHẬN THƯỞNG</span>
+              </h1>
+
+              <p class="form-subtitle" id="formSubtitle">
+                Điền mã CODE và tài khoản của bạn để kiểm tra ưu đãi đang áp dụng.
+              </p>
+            </div>
+
+            <form class="form" id="codeForm" novalidate>
+
+              <div class="field">
+                <label for="promoCode">
+                  <span class="label-icon" aria-hidden="true">#</span>
+                  Mã CODE
+                </label>
+
+                <div class="input-wrap">
+                  <input
+                    id="promoCode"
+                    name="promoCode"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Nhập mã CODE"
+                    maxlength="50"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="username">
+                  <span class="label-icon" aria-hidden="true">@</span>
+                  Tài khoản
+                </label>
+
+                <div class="input-wrap">
+                  <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    autocomplete="username"
+                    placeholder="Nhập tài khoản"
+                    maxlength="80"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="button-content">
+                  <span id="submitText">NHẬN THƯỞNG NGAY</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </span>
+              </button>
+
+              <div class="helper-links">
+                <a class="helper-link" id="detailLink" href="#" target="_blank" rel="noopener noreferrer">
+                  <span>CHI TIẾT</span>
+                  <span class="helper-icon" aria-hidden="true">→</span>
+                </a>
+
+                <a class="helper-link" id="codePageLink" href="#" target="_blank" rel="noopener noreferrer">
+                  <span>Trang phát code</span>
+                  <span class="helper-icon" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              <div class="status-message" id="statusMessage" role="status" aria-live="polite"></div>
+
+              <p class="form-note">
+                <span class="secure">● BẢO MẬT</span>
+                <span>Thông tin được sử dụng để kiểm tra chương trình ưu đãi. Template hiện chỉ mô phỏng giao diện và chưa gửi dữ liệu tới máy chủ.</span>
+              </p>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* =========================================================
+       CONFIG - CHỈNH PHẦN NÀY KHI NHÂN BẢN TEMPLATE
+       ========================================================= */
+    const CONFIG = {
+      // ===== 1) NHẬN DIỆN THƯƠNG HIỆU =====
+      brand: {
+        name: "JUN88",
+        eyebrow: "NHẬN CODE - NHẬN THƯỞNG MỖI NGÀY",
+        formTitle: "NHẬP CODE",
+        formTitleAccent: "NHẬN THƯỞNG",
+        subtitle: "Điền mã CODE và tài khoản của bạn để kiểm tra ưu đãi đang áp dụng.",
+        logoText: "J"
+      },
+
+      // ===== 2) TOÀN BỘ LINK CTA — CHỈ SỬA TẠI ĐÂY =====
+      links: {
+        // Tập trung TẤT CẢ link CTA ở đây:
+        register: "https://example.com/dang-ky",
+        detail: "https://example.com/chi-tiet-chuong-trinh",
+        codePage: "https://example.com/trang-phat-code"
+      },
+
+      // ===== 3) MÀU SẮC — ĐỔI Ở ĐÂY ĐỂ NHÂN BẢN SITE =====
+      theme: {
+        primary: "#079fd2",
+        primaryDark: "#087ea9",
+        primaryDeep: "#056486",
+        accent: "#77ebff",
+        background: "#eefcff"
+      },
+
+      messages: {
+        emptyCode: "Vui lòng nhập mã CODE.",
+        emptyUser: "Vui lòng nhập tài khoản.",
+        success: "Đã nhận thông tin. Hệ thống đang kiểm tra ưu đãi…"
+      }
+    };
+
+    /* ===== ÁP CONFIG VÀO GIAO DIỆN ===== */
+    const root = document.documentElement;
+
+    root.style.setProperty("--primary", CONFIG.theme.primary);
+    root.style.setProperty("--primary-dark", CONFIG.theme.primaryDark);
+    root.style.setProperty("--primary-deep", CONFIG.theme.primaryDeep);
+    root.style.setProperty("--accent", CONFIG.theme.accent);
+    root.style.setProperty("--bg", CONFIG.theme.background);
+
+    document.title = `${CONFIG.brand.name} - ${CONFIG.brand.formTitle} ${CONFIG.brand.formTitleAccent}`;
+    document.getElementById("brandName").innerHTML = `
+      <div class="brand-mark" aria-hidden="true"><span>${CONFIG.brand.logoText}</span></div>
+      <span>${CONFIG.brand.name}</span>
+    `;
+    document.getElementById("brandName").setAttribute("aria-label", CONFIG.brand.name);
+    document.getElementById("heroEyebrow").textContent = CONFIG.brand.eyebrow;
+    document.getElementById("code-title").innerHTML = `
+      ${CONFIG.brand.formTitle}
+      <span>${CONFIG.brand.formTitleAccent}</span>
+    `;
+    document.getElementById("formSubtitle").textContent = CONFIG.brand.subtitle;
+
+    document.getElementById("detailLink").href = CONFIG.links.detail;
+    document.getElementById("codePageLink").href = CONFIG.links.codePage;
+
+    /* ===== FORM DEMO ===== */
+    const form = document.getElementById("codeForm");
+    const codeInput = document.getElementById("promoCode");
+    const usernameInput = document.getElementById("username");
+    const submitBtn = document.getElementById("submitBtn");
+    const submitText = document.getElementById("submitText");
+    const statusMessage = document.getElementById("statusMessage");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const code = codeInput.value.trim();
+      const username = usernameInput.value.trim();
+
+      statusMessage.classList.remove("show");
+      statusMessage.textContent = "";
+
+      if (!code) {
+        statusMessage.textContent = CONFIG.messages.emptyCode;
+        statusMessage.style.color = "#d84f4f";
+        statusMessage.classList.add("show");
+        codeInput.focus();
+        return;
+      }
+
+      if (!username) {
+        statusMessage.textContent = CONFIG.messages.emptyUser;
+        statusMessage.style.color = "#d84f4f";
+        statusMessage.classList.add("show");
+        usernameInput.focus();
+        return;
+      }
+
+      const originalText = "NHẬN THƯỞNG NGAY";
+      submitBtn.disabled = true;
+      submitText.textContent = "ĐANG KIỂM TRA...";
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitText.textContent = originalText;
+
+        statusMessage.textContent = CONFIG.messages.success;
+        statusMessage.style.color = "#10a981";
+        statusMessage.classList.add("show");
+      }, 900);
+    });
+
+    /* ===== TỰ ĐỘNG XÓA THÔNG BÁO KHI NGƯỜI DÙNG GÕ ===== */
+    [codeInput, usernameInput].forEach((input) => {
+      input.addEventListener("input", () => {
+        statusMessage.classList.remove("show");
+      });
+    });
+  </script>
+</body>
+</html>
