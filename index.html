@@ -9,18 +9,10 @@
   <title>JUN88 - Nhập Code Nhận Thưởng</title>
 
   <style>
-    /* =========================================================
-       JUN88 SINGLE SECTION TEMPLATE
-       ========================================================= */
+    /* JUN88 SINGLE SECTION TEMPLATE */
 
     :root {
-      /* =========================================================
-         [1] VỊ TRÍ THAY HÌNH NỀN TRANG (BACKGROUND IMAGE):
-         - Điền đường dẫn ảnh vào biến --bg-image bên dưới.
-         - Ví dụ dùng ảnh cùng thư mục: --bg-image: url('bg-jun88.jpg');
-         - Ví dụ dùng link ảnh online:  --bg-image: url('https://link-anh.com/bg.jpg');
-         - Nếu để `none`: Trang sẽ tự dùng nền gradient xanh mượt.
-         ========================================================= */
+      /* [1] THAY HÌNH NỀN (BACKGROUND IMAGE) */
       --bg-image: url('https://i.pinimg.com/736x/75/2c/8e/752c8e7e20195797d9e8c03d8561c0bf.jpg'); 
       --bg-overlay-color: rgba(238, 252, 255, 0.35); /* Lớp phủ mờ giúp nổi bật nội dung trên ảnh nền */
 
@@ -293,7 +285,7 @@
       justify-content: center;
     }
 
-    /* Vòng tròn xanh nhạt tỏa sáng - Căn chính giữa chuẩn 100% sau lưng hình người */
+    /* Vòng tròn xanh nhạt tỏa sáng */
     .circle-backdrop {
       position: absolute;
       width: clamp(320px, 82%, 460px);
@@ -325,7 +317,6 @@
       100% { transform: translate(0, 0) rotate(360deg); }
     }
 
-    /* Thẻ ảnh nhân vật chính - Kích thước to hơn & căn chuẩn center */
     .visual-image {
       position: relative;
       z-index: 3;
@@ -341,7 +332,6 @@
       -webkit-user-drag: none;
     }
 
-    /* Các phần quà và thẻ vé vây xung quanh */
     .visual-ticket {
       position: absolute;
       z-index: 6;
@@ -461,7 +451,6 @@
       box-shadow: 0 10px 22px rgba(0, 147, 194, 0.20);
     }
 
-    /* GRADIENT TEXT MỚI CỰC KỲ NỔI BẬT DÀNH CHO "NHẬP CODE NHẬN THƯỞNG" */
     .form-title {
       position: relative;
       margin: 0;
@@ -481,7 +470,6 @@
     .form-title span {
       display: block;
       margin-top: 2px;
-      /* Dòng 2: Gradient VÀNG ÁNH KIM - GOLD KHUYẾN MÃI RỰC RỠ */
       background: linear-gradient(180deg, #FFE770 0%, #FFB700 45%, #E65100 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -884,14 +872,7 @@
         <div class="top-section">
           <div class="hero-copy">
 
-            <!-- 
-              =========================================================
-              [2] VỊ TRÍ THAY LOGO (BRAND LOGO):
-              - Mặc định đang dùng biểu tượng chữ J bằng HTML/CSS.
-              - Nếu muốn thay bằng ẢNH LOGO THẬT, bạn bỏ thẻ <div class="brand-mark"> 
-                và thêm: <img src="logo-jun88.png" style="height: 50px; width: auto;" alt="Logo JUN88" />
-              =========================================================
-            -->
+            <!-- [2] THAY LOGO-->
             <img src="https://hamonline.nl/wp-content/uploads/2026/07/jun88-logo-1.webp" style="height: 60px; width: auto;" alt="Logo JUN88" />
 
             <p class="eyebrow" id="heroEyebrow">NHẬN CODE - NHẬN THƯỞNG MỖI NGÀY</p>
@@ -913,19 +894,14 @@
               <!-- Vòng tròn xanh nhạt tỏa sáng - Căn chuẩn center 100% sau lưng hình người -->
               <div class="circle-backdrop" aria-hidden="true"></div>
 
-              <!-- 
-                =========================================================
-                [3] VỊ TRÍ THAY HÌNH ẢNH NHÂN VẬT / CẦU THỦ / KHUYẾN MÃI:
-                - Thay link ảnh của bạn vào thuộc tính `src="..."` bên dưới.
-                =========================================================
-              -->
+              <!-- [3] THAY HÌNH ẢNH NHÂN VẬT / CẦU THỦ / KHUYẾN MÃI -->
               <img class="visual-image" src="https://golmania.it/wp-content/uploads/2025/08/DANG-KY-jun88-min-1-8-4.png" alt="JUN88 - Nhận Code Thưởng" id="realVisualImg" />
 
-              <!-- Thẻ vé CODE / BONUS vây xung quanh -->
+              <!-- Thẻ vé CODE xung quanh -->
               <div class="visual-ticket">CODE</div>
               <div class="visual-ticket right">BONUS</div>
 
-              <!-- Hộp quà tặng vây xung quanh -->
+              <!-- Hộp quà tặng xung quanh -->
               <div class="gift"></div>
               <div class="gift right"></div>
             </div>
