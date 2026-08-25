@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#effcff" />
   <meta name="robots" content="index, follow" />
-  <meta name="description" content="JUN88 - Nhập mã CODE nhận thưởng. Giao diện landing page một section tối ưu cho chiến dịch nhận code." />
-  <title>JUN88 - Nhập Code Nhận Thưởng</title>
+  <meta name="description" content="Ưu đãi JUN88, Giftcode Jun88, Nhập CODE nhận thưởng lớn, nhiều phần quà khuyến mãi giá trị lớn, vourcher game online khủng từ nhà cái Jun88 " />
+  <title>Giftcode JUN88 - Ưu đãi Jun88, Nhập Code Nhận Thưởng Cực Khủng</title>
 
   <style>
     /* JUN88 SINGLE SECTION TEMPLATE */
-
     :root {
       /* [1] THAY HÌNH NỀN (BACKGROUND IMAGE) */
       --bg-image: url('https://i.pinimg.com/736x/75/2c/8e/752c8e7e20195797d9e8c03d8561c0bf.jpg'); 
@@ -152,7 +151,7 @@
       gap: clamp(24px, 3vw, 42px);
     }
 
-    /* --- SECTION 1: TOP HERO COPY (LOGO & SLOGAN CANH GIỮA) --- */
+    /* --- SECTION 1: TOP HERO COPY --- */
     .top-section {
       width: 100%;
       flex: 0 0 auto;
@@ -240,7 +239,7 @@
       backdrop-filter: blur(8px);
     }
 
-    /* --- SECTION 2: 2 CỘT CÂN ĐỐI (TRÁI: VISUAL, PHẢI: FORM) --- */
+    /* --- SECTION 2: 2 CỘT CÂN ĐỐI --- */
     .content-section {
       width: 100%;
       flex: 1 1 auto;
@@ -285,7 +284,6 @@
       justify-content: center;
     }
 
-    /* Vòng tròn xanh nhạt tỏa sáng */
     .circle-backdrop {
       position: absolute;
       width: clamp(320px, 82%, 460px);
@@ -432,7 +430,6 @@
       font-weight: 1000;
       text-transform: uppercase;
       letter-spacing: -0.02em;
-      /* Dòng 1: Gradient Xanh Băng đậm nổi bật */
       background: linear-gradient(180deg, #056285 0%, #0093c4 50%, #024561 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -534,6 +531,7 @@
       transform: translateY(-1px);
     }
 
+    /* NÚT SUBMIT ĐƯỢC FIX LẠI CẤU TRÚC */
     .submit-btn {
       position: relative;
       width: 100%;
@@ -554,6 +552,7 @@
         transform .22s ease,
         box-shadow .22s ease,
         filter .22s ease;
+      cursor: pointer;
     }
 
     .submit-btn::before {
@@ -709,11 +708,6 @@
       50% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
     }
 
-    @keyframes ticketFloat {
-      0%, 100% { transform: translateY(0) rotate(-12deg); }
-      50% { transform: translateY(-12px) rotate(-8deg); }
-    }
-
     @keyframes shine {
       0%, 30% { left: -38%; }
       56%, 100% { left: 120%; }
@@ -864,7 +858,6 @@
               <!-- [3] THAY HÌNH ẢNH NHÂN VẬT / CẦU THỦ / KHUYẾN MÃI -->
               <img class="visual-image" src="https://hamonline.nl/wp-content/uploads/2026/08/nhan-qua-jun88.webp" alt="JUN88 - Nhận Code Thưởng" id="realVisualImg" />
 
-
               <!-- Hộp quà tặng xung quanh -->
               <div class="gift"></div>
               <div class="gift right"></div>
@@ -883,6 +876,7 @@
                 <p class="form-subtitle">Điền mã CODE và tên tài khoản JUN88 của bạn để nhận thưởng từ Jun88 ngay.</p>
               </div>
 
+              <!-- Form HTML -->
               <form class="form" id="codeForm" onsubmit="handleFormSubmit(event)">
                 <div class="field">
                   <label for="codeInputValue">
@@ -904,12 +898,13 @@
                   </div>
                 </div>
 
-              <div class="button-content ">
-                <a href="https://tinyurl.com/dangnhap-sin88" target="_blank" rel="noopener noreferrer" class="button-content ">
-                  <span>NHẬN THƯỞNG NGAY</span>
-                  <span class="button-content ">⚡</span>
-                </a>
-              </div>
+                <!-- ĐÃ FIX: Sửa cấu trúc nút bấm để chạy form submit và giữ nguyên CSS đẹp -->
+                <button type="submit" class="submit-btn">
+                  <div class="button-content">
+                    <span>NHẬN THƯỞNG NGAY</span>
+                    <span class="btn-arrow">⚡</span>
+                  </div>
+                </button>
 
                 <div class="status-message" id="statusMsg"></div>
               </form>
@@ -940,6 +935,7 @@
 
   <script>
     function handleFormSubmit(event) {
+      // Ngăn form tự động load lại trang
       event.preventDefault();
       
       const codeInput = document.getElementById('codeInputValue').value.trim();
@@ -948,24 +944,22 @@
 
       if (!codeInput || !usernameInput) return;
 
+      // 1. Hiển thị thông báo thành công
       statusMsg.textContent = '🎉 Gửi yêu cầu nhận Code thành công cho tài khoản: ' + usernameInput;
       statusMsg.classList.add('show');
 
+      // 2. Chuyển hướng người dùng tự động sang Tab mới (Đã tích hợp vào đây)
+      const TARGET_URL = 'https://tinyurl.com/dangnhap-sin88';
+      window.open(TARGET_URL, '_blank');
+
+      // 3. Xóa dữ liệu cũ sau 0.5s và ẩn thông báo sau 4s
       setTimeout(() => {
         document.getElementById('codeForm').reset();
         setTimeout(() => {
           statusMsg.classList.remove('show');
         }, 4000);
       }, 500);
-    
-      const TARGET_URL = 'https://tinyurl.com/dangnhap-sin88';
-
-  document.getElementById('rewardForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Mở link chuyển hướng ngay lập tức (trên tab mới hoặc tab hiện tại)
-    window.open(TARGET_URL, '_blank');
-  });
+    } // ĐÃ FIX: Thêm dấu đóng ngoặc nhọn bị thiếu ở hàm này
   </script>
 </body>
 </html>
