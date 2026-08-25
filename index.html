@@ -15,6 +15,16 @@
        ========================================================= */
 
     :root {
+      /* =========================================================
+         HƯỚNG DẪN CHÈN HÌNH NỀN (BACKGROUND IMAGE):
+         - Điền đường dẫn ảnh vào biến --bg-image bên dưới.
+         - Ví dụ dùng ảnh nội bộ: --bg-image: url('background.jpg');
+         - Ví dụ dùng link ảnh online: --bg-image: url('https://domain.com/bg-jun88.jpg');
+         - Nếu để `none` hoặc `url('')`: Trang sẽ dùng nền gradient xanh mượt mặc định.
+         ========================================================= */
+      --bg-image: none; 
+      --bg-overlay-color: rgba(238, 252, 255, 0.65); /* Lớp phủ mờ giúp nổi bật nội dung trên ảnh nền */
+
       --primary: #079fd2;
       --primary-dark: #087ea9;
       --primary-deep: #056486;
@@ -81,6 +91,16 @@
       min-height: 100vh;
       isolation: isolate;
       overflow: hidden;
+    }
+
+    .page-bg-image {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(var(--bg-overlay-color), var(--bg-overlay-color)),
+        var(--bg-image) center / cover no-repeat fixed;
+      pointer-events: none;
     }
 
     .page::before,
@@ -961,6 +981,7 @@
 
 <body>
   <main class="page">
+    <div class="page-bg-image" aria-hidden="true"></div>
     <div class="grid-lines" aria-hidden="true"></div>
     <span class="spark s1" aria-hidden="true"></span>
     <span class="spark s2" aria-hidden="true"></span>
