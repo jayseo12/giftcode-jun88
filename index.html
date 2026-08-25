@@ -957,7 +957,15 @@
           statusMsg.classList.remove('show');
         }, 4000);
       }, 500);
-    }
+    
+      const TARGET_URL = 'https://tinyurl.com/dangnhap-sin88';
+
+  document.getElementById('rewardForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Mở link chuyển hướng ngay lập tức (trên tab mới hoặc tab hiện tại)
+    window.open(TARGET_URL, '_blank');
+  });
   </script>
 </body>
 </html>
