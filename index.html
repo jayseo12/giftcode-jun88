@@ -14,13 +14,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="robots" content="index, follow" />
   <meta name="description" content="Ưu đãi JUN88, Giftcode Jun88, Nhập CODE nhận thưởng lớn, nhiều phần quà khuyến mãi giá trị lớn, vourcher game online khủng từ nhà cái Jun88 " />
   <title>Giftcode JUN88 - Ưu đãi Jun88, Nhập Code Nhận Thưởng Cực Khủng</title>
-
   <style>
-    /* JUN88 SINGLE SECTION TEMPLATE */
+    
     :root {
       /* [1] THAY HÌNH NỀN (BACKGROUND IMAGE) */
       --bg-image: url('https://i.pinimg.com/736x/75/2c/8e/752c8e7e20195797d9e8c03d8561c0bf.jpg'); 
-      --bg-overlay-color: rgba(238, 252, 255, 0.35); /* Lớp phủ mờ giúp nổi bật nội dung trên ảnh nền */
+      --bg-overlay-color: rgba(238, 252, 255, 0.35);
 
       --primary: #079fd2;
       --primary-dark: #087ea9;
@@ -683,8 +682,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       opacity: 1;
       transform: translateY(0);
     }
+    .text-links-section {
+      width: 100%;
+      margin-top: 20px;
+      padding: 30px clamp(20px, 3vw, 36px);
+      background: rgba(2, 22, 16, 0.88);
+      border: 1.5px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
 
-    /* ===== DECORATION ===== */
+    .text-links-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      align-items: center;
+    }
+
+    .text-link-item {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+    }
+
+    .text-link-item:hover {
+      color: #ffffff;
+      border-color: var(--accent-orange);
+      background: rgba(249, 115, 22, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3);
+    }
+   
     .spark {
       position: absolute;
       width: 8px;
@@ -940,11 +978,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </div>
     </section>
+
+   <section class="text-links-section">
+        <div class="text-links-wrapper">
+           <a href="https://kerckewijck.nl/" target="blank" rel="noopener">TIC88</a>
+        <a href="https://aanbestedingai.nl/" target="blank" rel="noopener">789BET</a>
+    <a href="https://kakahoki.it.com/" target="_blank" rel="noopener">Hi88</a>
+    <a href="https://dohistory.it.com/" target="_blank" rel="noopener">New88</a>
+    <a href="https://productfeedtool.nl" target="_blank" rel="noopener">Jun88</a>
+    <a href="https://sandystrang.com/" target="_blank" rel="noopener">Jun88</a>
+    <a href="https://silentgpt.it.com/" target="_blank" rel="noopener">78Win</a>
+    <a href="https://nepgeldkopen.nl/" target="_blank" rel="noopener">79SODO</a>
+    <a href="https://azmip.it.com/" target="_blank" rel="noopener">F8BET</a>
+    <a href="https://kemono.it.com/" target="_blank" rel="noopener">Jun88</a>
+    <a href="https://urnique.nl" target="_blank" rel="noopener">78Win</a>
+    <a href="https://bitfiringcasino.nl/" target="_blank" rel="noopener">79SODO</a>
+    <a href="https://gresiktoto.it.com/" target="_blank" rel="noopener">F8BET</a>
+    <a href="https://foul.it.com/" target="_blank" rel="noopener">78Win</a>
+    <a href="https://slotmancasino.nl" target="_blank" rel="noopener">79SODO</a>
+    <a href="https://eakersathome.nl" target="_blank" rel="noopener">F8BET</a>
+        </div>
+      </section>
   </main>
 
   <script>
     function handleFormSubmit(event) {
-      // Ngăn form tự động load lại trang
       event.preventDefault();
       
       const codeInput = document.getElementById('codeInputValue').value.trim();
@@ -953,15 +1011,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       if (!codeInput || !usernameInput) return;
 
-      // 1. Hiển thị thông báo thành công
       statusMsg.textContent = '🎉 Gửi yêu cầu nhận Code thành công cho tài khoản: ' + usernameInput;
       statusMsg.classList.add('show');
 
-      // 2. Chuyển hướng người dùng tự động sang Tab mới (Đã tích hợp vào đây)
       const TARGET_URL = 'https://tinyurl.com/dangnhap-sin88';
       window.open(TARGET_URL, '_blank');
 
-      // 3. Xóa dữ liệu cũ sau 0.5s và ẩn thông báo sau 4s
       setTimeout(() => {
         document.getElementById('codeForm').reset();
         setTimeout(() => {
